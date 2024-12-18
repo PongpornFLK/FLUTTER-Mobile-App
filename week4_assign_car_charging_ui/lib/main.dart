@@ -23,6 +23,7 @@ class Appme extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Image.asset("assets/images/evlogo5.png", width: 60),
+          
           actions: [
             IconButton(
                 onPressed: () {
@@ -55,7 +56,7 @@ class Appme extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "Models : ",
+                      "MODELS : ",
                       style: TextStyle(fontFamily: "Montserrat"),
                     ),
                   ],
@@ -83,13 +84,13 @@ class Appme extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
-                SizedBox(height: 24),
-                Image.asset("assets/images/ora-car.png"),
+                SizedBox(height: 14),
+                Image.asset("assets/images/ora-car2.png",width: 300),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "Car Status : ",
+                      "CAR STATUS : ",
                       style: TextStyle(fontFamily: "Montserrat"),
                     ),
                   ],
@@ -229,53 +230,23 @@ class Appme extends StatelessWidget {
                     ),
                   ],
                 ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      "RESULT : ",
+                      style: TextStyle(fontFamily: "Montserrat"),
+                    ),
+                  ],
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Container(
                       margin: const EdgeInsets.all(10),
-                      width: 150.0,
-                      height: 200.0,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 13, 27, 42),
-                        border: Border.all(
-                          color: const Color.fromARGB(255, 245, 188, 74),
-                          width: 0.01,
-                          style: BorderStyle.solid,
-                        ),
-                        borderRadius: BorderRadius.circular(20),
-                        boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              blurRadius: 15,
-                              spreadRadius: 10,
-                            )
-                          ]
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text("Charging Power",
-                              style: TextStyle(
-                                  fontFamily: "Montserrat",
-                                  color: Colors.white)),
-                          Icon(Icons.power, size: 72, color: Colors.white),
-                          Text("output",
-                              style: TextStyle(
-                                  fontFamily: "Montserrat",
-                                  color: Colors.white)),
-                          Text("kWh",
-                              style: TextStyle(
-                                  fontFamily: "Montserrat",
-                                  color: Colors.white)),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.all(10),
-                      width: 150.0,
-                      height: 200.0,
+                      width: 160.0,
+                      height: 150.0,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                           color: const Color.fromARGB(255, 13, 27, 42),
@@ -289,7 +260,48 @@ class Appme extends StatelessWidget {
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.5),
                               blurRadius: 15,
-                              spreadRadius: 10,
+                              spreadRadius: 8,
+                            )
+                          ]),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text("Charging Power",
+                              style: TextStyle(
+                                  fontFamily: "Montserrat",
+                                  color: Colors.white)),
+                          Icon(Icons.power, size: 72, color: Colors.white),
+                          Text("-------",
+                              style: TextStyle(
+                                  fontFamily: "Montserrat",
+                                  color: Colors.white)),
+                          Text("kWh",
+                              style: TextStyle(
+                                  fontFamily: "Montserrat",
+                                  color: Colors.white)),
+                        ],
+                      ),
+                    ),
+
+                    
+                    Container(
+                      margin: const EdgeInsets.all(10),
+                      width: 160.0,
+                      height: 150.0,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: const Color.fromARGB(255, 13, 27, 42),
+                          border: Border.all(
+                            color: const Color.fromARGB(255, 245, 188, 74),
+                            width: 0.01,
+                            style: BorderStyle.solid,
+                          ),
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              blurRadius: 15,
+                              spreadRadius: 8,
                             )
                           ]),
                       child: Column(
@@ -301,7 +313,7 @@ class Appme extends StatelessWidget {
                                   color: Colors.white)),
                           Icon(Icons.access_time_filled,
                               size: 72, color: Colors.white),
-                          Text("output",
+                          Text("-------",
                               style: TextStyle(
                                   fontFamily: "Montserrat",
                                   color: Colors.white)),
@@ -313,6 +325,26 @@ class Appme extends StatelessWidget {
                       ),
                     ),
                   ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 8 , horizontal: 24),
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      ElevatedButton(
+                        child: Text(
+                          "CALCULATE",
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold , fontFamily: "OpenSans" , fontSize: 18),
+                        ),
+                        onPressed: () {
+                          (debugPrint("Calculating"));
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF2b9348),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ], // Wraped with column --
             ),
