@@ -12,30 +12,35 @@ class Appme extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-              seedColor: const Color.fromARGB(255, 255, 222, 222)),
-          useMaterial3: true,
-          appBarTheme:
-              const AppBarTheme(color: Color.fromARGB(255, 255, 255, 255))),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromARGB(255, 222, 226, 230),
+        ),
+        useMaterial3: true,
+        appBarTheme: const AppBarTheme(
+          color: Color.fromARGB(255, 19, 16, 16),
+        ),
+      ),
       home: Scaffold(
         appBar: AppBar(
-          title: Image.asset("assets/images/kfclogo.png", width: 100),
+          title: Image.asset("assets/images/evlogo5.png", width: 60),
           actions: [
             IconButton(
                 onPressed: () {
-                  debugPrint("Show list");
+                  debugPrint("List menus");
                 },
-                icon: Icon(
-                  Icons.list,
+                icon: const Icon(
+                  Icons.format_list_bulleted,
                   size: 32,
+                  color: Colors.white,
                 )),
             IconButton(
                 onPressed: () {
-                  debugPrint("Favorite");
+                  debugPrint("My Profile");
                 },
-                icon: Icon(
-                  Icons.favorite,
+                icon: const Icon(
+                  Icons.account_circle,
                   size: 32,
+                  color: Colors.white,
                 ))
           ],
         ),
@@ -44,9 +49,36 @@ class Appme extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: Center(
             child: Column(
-              // Wraped with column --
-              
+              children: [
+                SizedBox(height: 24),
+                Image.asset("assets/images/ora-car.png"),
+                Container(
+                  margin: const EdgeInsets.all(20.0),
+                  width: 500.0,
+                  height: 50.0,
+                  child: Text(
+                    "Models  :  ORA Good Cat",
+                    style: TextStyle(fontWeight: FontWeight.w900, fontSize: 22 , fontFamily: "Montserrat"),
+                  ),
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(67, 173, 181, 189),
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 0.01,
+                      style: BorderStyle.solid,
+                    ),
+                    borderRadius: BorderRadius.circular(10)
+                  ),
+                ),
+
+                TextFieldTapRegion(child:
+                  
+                ),
+              ], // Wraped with column --
             ),
+
+            
           ),
         ),
       ),
