@@ -13,7 +13,7 @@ class Appme extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
-          seedColor: const Color.fromARGB(255, 222, 226, 230),
+          seedColor: const Color.fromARGB(255, 255, 255, 255),
         ),
         useMaterial3: true,
         appBarTheme: const AppBarTheme(
@@ -22,6 +22,7 @@ class Appme extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
+          // Appbar
           title: Image.asset("assets/images/evlogo5.png", width: 60),
           actions: [
             IconButton(
@@ -61,12 +62,15 @@ class Appme extends StatelessWidget {
           child: Center(
             child: Column(
               children: [
+                // Part Topic ----------------------------------------------------------------------------
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
                       "MODELS : ",
-                      style: TextStyle(fontFamily: "Montserrat"),
+                      style: TextStyle(
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.w700),
                     ),
                   ],
                 ),
@@ -78,7 +82,7 @@ class Appme extends StatelessWidget {
                   child: Text(
                     "ORA Good Cat",
                     style: TextStyle(
-                        fontWeight: FontWeight.w900,
+                        fontWeight: FontWeight.w300,
                         fontSize: 22,
                         fontFamily: "Montserrat"),
                   ),
@@ -89,9 +93,9 @@ class Appme extends StatelessWidget {
                       boxShadow: [
                         BoxShadow(
                           color: Colors.grey.withOpacity(0.5),
-                          blurRadius: 15,
-                          spreadRadius: 8,
-                        )
+                          blurRadius: 5,
+                          spreadRadius: 3,
+                        ),
                       ]),
                 ),
                 Padding(
@@ -99,12 +103,17 @@ class Appme extends StatelessWidget {
                       const EdgeInsets.symmetric(vertical: 15, horizontal: 0),
                   child: Image.asset("assets/images/ora-car2.png", width: 300),
                 ),
+
+                // Part Textfeild / Input -----------------------------------------------------------------
+                
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "CAR STATUS : ",
-                      style: TextStyle(fontFamily: "Montserrat"),
+                      "STATUS : ",
+                      style: TextStyle(
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.w700),
                     ),
                   ],
                 ),
@@ -116,15 +125,17 @@ class Appme extends StatelessWidget {
                           vertical: 5.0, horizontal: 10.0),
                       width: 170.0,
                       height: 60.0,
-                      color: Colors.white,
+                      // color: Colors.white,
                       child: TextField(
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.black,
-                            ),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
+                          // border: OutlineInputBorder(
+                          //   borderSide: BorderSide(
+                          //     color: Colors.black,
+                          //   ),
+                          //   borderRadius: BorderRadius.circular(20),
+                          // ),
+                          filled: true,
+                          fillColor: Colors.white,
                           hintText: "Current SOC %",
                         ),
                         style:
@@ -136,16 +147,12 @@ class Appme extends StatelessWidget {
                           vertical: 5.0, horizontal: 10.0),
                       width: 170.0,
                       height: 60.0,
-                      color: Colors.white,
                       child: TextField(
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.black,
-                            ),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
+                          filled: true,
+                          fillColor: Colors.white,
                           hintText: "Target SOC %",
+                          
                         ),
                         style:
                             TextStyle(fontSize: 15, fontFamily: "Montserrat"),
@@ -161,15 +168,10 @@ class Appme extends StatelessWidget {
                           vertical: 5.0, horizontal: 10.0),
                       width: 170.0,
                       height: 60.0,
-                      color: Colors.white,
                       child: TextField(
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.black,
-                            ),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
+                          filled: true,
+                          fillColor: Colors.white,
                           hintText: "Charging Rate (A)",
                         ),
                         style:
@@ -181,15 +183,10 @@ class Appme extends StatelessWidget {
                           vertical: 5.0, horizontal: 10.0),
                       width: 170.0,
                       height: 60.0,
-                      color: Colors.white,
                       child: TextField(
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.black,
-                            ),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
+                          filled: true,
+                          fillColor: Colors.white,
                           hintText: "Voltage (V)",
                         ),
                         style:
@@ -206,15 +203,10 @@ class Appme extends StatelessWidget {
                           vertical: 5.0, horizontal: 10.0),
                       width: 170.0,
                       height: 60.0,
-                      color: Colors.white,
                       child: TextField(
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.black,
-                            ),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
+                          filled: true,
+                          fillColor: Colors.white,
                           hintText: "Bat Capacity .kWh",
                         ),
                         style:
@@ -226,15 +218,10 @@ class Appme extends StatelessWidget {
                           vertical: 5.0, horizontal: 10.0),
                       width: 170.0,
                       height: 60.0,
-                      color: Colors.white,
                       child: TextField(
                         decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Colors.black,
-                            ),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
+                          filled: true,
+                          fillColor: Colors.white,
                           hintText: "Efficiency %",
                         ),
                         style:
@@ -243,12 +230,16 @@ class Appme extends StatelessWidget {
                     ),
                   ],
                 ),
+
+                // Part Result and Button Calculated ---------------------------------------------------
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
                       "RESULT : ",
-                      style: TextStyle(fontFamily: "Montserrat"),
+                      style: TextStyle(
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.w700),
                     ),
                   ],
                 ),
@@ -265,7 +256,7 @@ class Appme extends StatelessWidget {
                           const Color(0xFF7ef29d),
                           const Color(0xFF099773),
                         ], begin: Alignment.topLeft),
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(35),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -296,7 +287,7 @@ class Appme extends StatelessWidget {
                           const Color(0xFFFFD700),
                           const Color(0xFFff930f)
                         ], begin: Alignment.topLeft),
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(35),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -338,7 +329,7 @@ class Appme extends StatelessWidget {
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
-                              const Color.fromARGB(255, 19, 20, 20),
+                              const Color.fromARGB(255, 19, 16, 16),
                         ),
                       ),
                     ],

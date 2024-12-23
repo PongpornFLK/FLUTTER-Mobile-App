@@ -78,7 +78,9 @@ flutter:
      - family: Montserrat
        fonts:
          - asset: font/Montserrat-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+         - asset: font/Montserrat-Bold.ttf
+           weight : 700
+            
   #         style: italic
      - family: OpenSans
        fonts:
