@@ -34,8 +34,10 @@ class _HomeState extends State<Home> {
               icon: const Icon(
                 Icons.format_list_bulleted,
                 size: 32,
-                color: Colors.white,
-              )),
+                color: Colors.white, 
+
+              )
+              ),
           IconButton(
             onPressed: () {
               debugPrint("My Profile");
@@ -62,7 +64,8 @@ class _HomeState extends State<Home> {
         child: Padding(
           // padding overall page
           padding: const EdgeInsets.all(12.0),
-          child: Center(
+          child: 
+          Center(
             child: Column(
               children: [
                 // Part Topic ----------------------------------------------------------------------------
@@ -72,19 +75,20 @@ class _HomeState extends State<Home> {
                     Text(
                       "MODELS : ",
                       style: TextStyle(
-                          fontFamily: "Montserrat", fontWeight: FontWeight.w700),
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.w700),
                     ),
                   ],
                 ),
                 Container(
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 5.0, horizontal: 20.0),
+                  margin: const EdgeInsets.symmetric(
+                      vertical: 5.0, horizontal: 20.0),
                   width: 500.0,
                   height: 50.0,
                   child: Text(
                     "ORA Good Cat",
                     style: TextStyle(
-                        fontWeight: FontWeight.w300,
+                        fontWeight: FontWeight.w600,
                         fontSize: 22,
                         fontFamily: "Montserrat"),
                   ),
@@ -105,20 +109,21 @@ class _HomeState extends State<Home> {
                       const EdgeInsets.symmetric(vertical: 15, horizontal: 0),
                   child: Image.asset("assets/images/ora-car2.png", width: 300),
                 ),
-        
+
                 // Part Textfeild / Input -----------------------------------------------------------------
-        
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
                       "STATUS : ",
                       style: TextStyle(
-                          fontFamily: "Montserrat", fontWeight: FontWeight.w700),
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.w700),
                     ),
                   ],
                 ),
-        
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -141,7 +146,8 @@ class _HomeState extends State<Home> {
                           fillColor: Colors.white,
                           hintText: "Current SOC %",
                         ),
-                        style: TextStyle(fontSize: 15, fontFamily: "Montserrat"),
+                        style:
+                            TextStyle(fontSize: 15, fontFamily: "Montserrat"),
                         controller: current,
                       ),
                     ),
@@ -156,7 +162,8 @@ class _HomeState extends State<Home> {
                           fillColor: Colors.white,
                           hintText: "Target SOC %",
                         ),
-                        style: TextStyle(fontSize: 15, fontFamily: "Montserrat"),
+                        style:
+                            TextStyle(fontSize: 15, fontFamily: "Montserrat"),
                         controller: target,
                       ),
                     ),
@@ -177,7 +184,8 @@ class _HomeState extends State<Home> {
                           fillColor: Colors.white,
                           hintText: "Charging Rate (A)",
                         ),
-                        style: TextStyle(fontSize: 15, fontFamily: "Montserrat"),
+                        style:
+                            TextStyle(fontSize: 15, fontFamily: "Montserrat"),
                         controller: ratecharg,
                       ),
                     ),
@@ -193,7 +201,8 @@ class _HomeState extends State<Home> {
                           fillColor: Colors.white,
                           hintText: "Voltage (V)",
                         ),
-                        style: TextStyle(fontSize: 15, fontFamily: "Montserrat"),
+                        style:
+                            TextStyle(fontSize: 15, fontFamily: "Montserrat"),
                         controller: voltage,
                       ),
                     ),
@@ -214,7 +223,8 @@ class _HomeState extends State<Home> {
                           fillColor: Colors.white,
                           hintText: "Bat Capacity .kWh",
                         ),
-                        style: TextStyle(fontSize: 15, fontFamily: "Montserrat"),
+                        style:
+                            TextStyle(fontSize: 15, fontFamily: "Montserrat"),
                         controller: battery,
                       ),
                     ),
@@ -229,15 +239,15 @@ class _HomeState extends State<Home> {
                           filled: true,
                           fillColor: Colors.white,
                           hintText: "Efficiency %",
-                          
                         ),
-                        style: TextStyle(fontSize: 15, fontFamily: "Montserrat"),
+                        style:
+                            TextStyle(fontSize: 15, fontFamily: "Montserrat"),
                         controller: efficiency,
                       ),
                     ),
                   ],
                 ),
-        
+
                 // Part Result and Button Calculated ---------------------------------------------------
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -245,7 +255,8 @@ class _HomeState extends State<Home> {
                     Text(
                       "RESULT : ",
                       style: TextStyle(
-                          fontFamily: "Montserrat", fontWeight: FontWeight.w700),
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.w700),
                     ),
                   ],
                 ),
@@ -258,19 +269,18 @@ class _HomeState extends State<Home> {
                       height: 150.0,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(colors: <Color>[
-                          const Color(0xFF7ef29d),
-                          const Color(0xFF099773),
-                        ], begin: Alignment.topLeft),
-                        borderRadius: BorderRadius.circular(35),
-                        boxShadow: [
+                          gradient: LinearGradient(colors: <Color>[
+                            const Color(0xFF7ef29d),
+                            const Color(0xFF099773),
+                          ], begin: Alignment.topLeft),
+                          borderRadius: BorderRadius.circular(35),
+                          boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.5),
                               blurRadius: 10,
                               spreadRadius: 5,
                             ),
-                          ]
-                      ),
+                          ]),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -279,14 +289,13 @@ class _HomeState extends State<Home> {
                                   fontWeight: FontWeight.w900,
                                   color: Colors.white)),
                           Icon(Icons.bolt, size: 56, color: Colors.white),
-                          
                           Text("$power",
                               style: TextStyle(
-                                  fontFamily: "Montserrat", color: Colors.white , fontSize: 24 , fontWeight: FontWeight.w900)),
-                          Text("kWh",
-                              style: TextStyle(
-                                  
-                                  color: Colors.white)),
+                                  fontFamily: "Montserrat",
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w900)),
+                          Text("kWh", style: TextStyle(color: Colors.white)),
                         ],
                       ),
                     ),
@@ -295,7 +304,6 @@ class _HomeState extends State<Home> {
                       width: 160.0,
                       height: 150.0,
                       alignment: Alignment.center,
-                      
                       decoration: BoxDecoration(
                           gradient: LinearGradient(colors: <Color>[
                             const Color(0xFFFFD700),
@@ -320,7 +328,10 @@ class _HomeState extends State<Home> {
                           Icon(Icons.av_timer, size: 56, color: Colors.white),
                           Text("$time",
                               style: TextStyle(
-                                  fontFamily: "Montserrat", color: Colors.white , fontSize: 24 , fontWeight: FontWeight.w900)),
+                                  fontFamily: "Montserrat",
+                                  color: Colors.white,
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.w900)),
                           Text("hrs",
                               style: TextStyle(
                                   fontWeight: FontWeight.w900,
@@ -343,19 +354,18 @@ class _HomeState extends State<Home> {
                               color: Colors.white,
                               fontWeight: FontWeight.w900,
                               fontSize: 16),
-                          
                         ),
                         onPressed: () {
-                          // double cur = double.parse(current.text);
+                          double cur = double.parse(current.text);
                           double tar = double.parse(target.text);
                           double rate = double.parse(ratecharg.text);
                           double vol = double.parse(voltage.text);
                           double bat = double.parse(battery.text);
                           double eff = double.parse(efficiency.text);
-        
+
                           double cal_power = (vol * rate) / 1000;
-                          double cal_time = (tar * bat / 100) / cal_power * eff;
-        
+                          double cal_time = ((tar - cur) * bat) / (cal_power * eff) / 100;
+
                           (debugPrint("Calculating"));
                           setState(() {
                             power = '$cal_power';
@@ -363,11 +373,36 @@ class _HomeState extends State<Home> {
                           });
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: const Color.fromARGB(255, 19, 16, 16),
+                          backgroundColor:
+                              const Color.fromARGB(255, 19, 16, 16),
                         ),
                       ),
                     ],
                   ),
+                ),
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Icon(Icons.arrow_back_ios),
+                        Text(
+                          "BACK",
+                          style: TextStyle(fontFamily: "Montserrat"),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          "NEXT",
+                          style: TextStyle(fontFamily: "Montserrat"),
+                        ),
+                        Icon(Icons.arrow_forward_ios),
+                      ],
+                    ),
+                  ],
                 ),
               ], // Wraped with column --
             ),
