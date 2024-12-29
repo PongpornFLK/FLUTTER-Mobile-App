@@ -34,10 +34,8 @@ class _HomeState extends State<Home> {
               icon: const Icon(
                 Icons.format_list_bulleted,
                 size: 32,
-                color: Colors.white, 
-
-              )
-              ),
+                color: Colors.white,
+              )),
           IconButton(
             onPressed: () {
               debugPrint("My Profile");
@@ -64,8 +62,7 @@ class _HomeState extends State<Home> {
         child: Padding(
           // padding overall page
           padding: const EdgeInsets.all(12.0),
-          child: 
-          Center(
+          child: Center(
             child: Column(
               children: [
                 // Part Topic ----------------------------------------------------------------------------
@@ -260,6 +257,7 @@ class _HomeState extends State<Home> {
                     ),
                   ],
                 ),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -273,12 +271,12 @@ class _HomeState extends State<Home> {
                             const Color(0xFF7ef29d),
                             const Color(0xFF099773),
                           ], begin: Alignment.topLeft),
-                          borderRadius: BorderRadius.circular(35),
+                          borderRadius: BorderRadius.circular(25),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.5),
-                              blurRadius: 10,
-                              spreadRadius: 5,
+                              blurRadius: 5,
+                              spreadRadius: 2,
                             ),
                           ]),
                       child: Column(
@@ -310,12 +308,12 @@ class _HomeState extends State<Home> {
                             const Color(0xFFff930f)
                           ], begin: Alignment.topLeft),
                           color: Colors.white,
-                          borderRadius: BorderRadius.circular(35),
+                          borderRadius: BorderRadius.circular(25),
                           boxShadow: [
                             BoxShadow(
                               color: Colors.grey.withOpacity(0.5),
-                              blurRadius: 10,
-                              spreadRadius: 5,
+                              blurRadius: 5,
+                              spreadRadius: 2,
                             ),
                           ]),
                       child: Column(
@@ -341,6 +339,8 @@ class _HomeState extends State<Home> {
                     ),
                   ],
                 ),
+
+                
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 10, horizontal: 90),
@@ -364,7 +364,8 @@ class _HomeState extends State<Home> {
                           double eff = double.parse(efficiency.text);
 
                           double cal_power = (vol * rate) / 1000;
-                          double cal_time = ((tar - cur) * bat) / (cal_power * eff) / 100;
+                          double cal_time =
+                              ((tar - cur) * bat) / (cal_power * eff) / 100;
 
                           (debugPrint("Calculating"));
                           setState(() {
@@ -373,9 +374,9 @@ class _HomeState extends State<Home> {
                           });
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor:
-                              const Color.fromARGB(255, 19, 16, 16),
-                        ),
+                            backgroundColor:
+                                const Color.fromARGB(255, 19, 16, 16),
+                            elevation: 10),
                       ),
                     ],
                   ),
