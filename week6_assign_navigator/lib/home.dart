@@ -1,3 +1,4 @@
+import 'package:assignment_car_charging_ui/welcome.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -634,14 +635,23 @@ class _HomeState extends State<Home> {
                     Row(
                       children: [
                         Icon(Icons.arrow_back_ios),
-                        Text(
-                          "BACK",
-                          style: TextStyle(fontFamily: "Montserrat"),
+                        TextButton(
+                          onPressed: () {
+                            debugPrint("Back");
+                            Navigator.pop(context);
+                          },
+                          child: Text(
+                            "Back",
+                            style: TextStyle(
+                                color: Colors.black, fontFamily: "Montserrat"),
+                          ),
+                          
                         ),
                       ],
                     ),
                     Row(
                       children: [
+
                         Text(
                           "NEXT",
                           style: TextStyle(fontFamily: "Montserrat"),

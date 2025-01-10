@@ -1,7 +1,15 @@
+import 'package:assignment_car_charging_ui/home.dart';
+import 'package:assignment_car_charging_ui/login.dart';
 import 'package:flutter/material.dart';
 
-class Welcome extends StatelessWidget {
-  const Welcome({super.key});
+class Welcome extends StatefulWidget {
+  @override
+  State<Welcome> createState() => _WelcomeState();
+}
+
+class _WelcomeState extends State<Welcome> {
+  final nameController = TextEditingController();
+  final passController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +55,7 @@ class Welcome extends StatelessWidget {
             children: [
               Container(
                 width: 1000,
-                height:650,
+                height: 650,
                 margin: const EdgeInsets.all(0),
                 decoration: BoxDecoration(
                     boxShadow: [
@@ -88,7 +96,8 @@ class Welcome extends StatelessWidget {
                             color: Colors.white,
                             fontWeight: FontWeight.w900),
                       ),
-                      Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
                             "APPLICATION",
@@ -98,23 +107,58 @@ class Welcome extends StatelessWidget {
                                 color: Colors.white,
                                 fontWeight: FontWeight.w900),
                           ),
-                          
-                          Icon(Icons.ev_station_rounded , size: 52, color: Colors.white,),
+                          Icon(
+                            Icons.ev_station_rounded,
+                            size: 52,
+                            color: Colors.white,
+                          ),
                         ],
                       ),
                       Expanded(
                         child: Image.asset(
                           "assets/images/welcome-car-rmbg.png",
                           width: 500,
-                          fit: BoxFit.cover,
+                          
                         ),
                       ),
+                      //TextField(
+                      //  controller: nameController,
+                      //  decoration: InputDecoration(
+                      //      hintText: "Name",
+                      //      filled: true,
+                      //      fillColor: Colors.white),
+                      //),
+                      //TextField(
+                      //  controller: passController,
+                      //  decoration: InputDecoration(
+                      //      hintText: "Pass",
+                      //      filled: true,
+                      //      fillColor: Colors.white),
+                      //),
+                      //ElevatedButton(
+                      //  onPressed: () {
+                      //    if (nameController.text.isNotEmpty ||
+                      //        passController.text.isNotEmpty) {
+                      //      Navigator.push(
+                      //        context,
+                      //        MaterialPageRoute(
+                      //          builder: (context) => Login(
+                      //            name: nameController.text,
+                      //            pass: int.parse(passController.text),
+                      //          ),
+                      //        ),
+                      //      );
+                      //    }
+                      //  },
+                      //  child: Text("Confirm"),
+                      //)
                     ],
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 30 , horizontal: 10),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
@@ -122,6 +166,8 @@ class Welcome extends StatelessWidget {
                       elevation: 20),
                   onPressed: () {
                     debugPrint("Next Page");
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/login', (route) => false);
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
