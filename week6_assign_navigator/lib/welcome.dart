@@ -1,5 +1,5 @@
 import 'package:assignment_car_charging_ui/home.dart';
-import 'package:assignment_car_charging_ui/login.dart';
+import 'package:assignment_car_charging_ui/regis.dart';
 import 'package:flutter/material.dart';
 
 class Welcome extends StatefulWidget {
@@ -8,9 +8,6 @@ class Welcome extends StatefulWidget {
 }
 
 class _WelcomeState extends State<Welcome> {
-  final nameController = TextEditingController();
-  final passController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,30 +16,11 @@ class _WelcomeState extends State<Welcome> {
         title: Image.asset("assets/images/evlogo5.png", width: 60),
         actions: [
           IconButton(
-              onPressed: () {
-                debugPrint("List menus");
-              },
-              icon: const Icon(
-                Icons.format_list_bulleted,
-                size: 32,
-                color: Colors.white,
-              )),
-          IconButton(
             onPressed: () {
-              debugPrint("My Profile");
+              debugPrint("List menus");
             },
             icon: const Icon(
-              Icons.account_circle,
-              size: 32,
-              color: Colors.white,
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              debugPrint("My Profile");
-            },
-            icon: const Icon(
-              Icons.settings_sharp,
+              Icons.format_list_bulleted,
               size: 32,
               color: Colors.white,
             ),
@@ -118,7 +96,6 @@ class _WelcomeState extends State<Welcome> {
                         child: Image.asset(
                           "assets/images/welcome-car-rmbg.png",
                           width: 500,
-                          
                         ),
                       ),
                       //TextField(
@@ -165,9 +142,11 @@ class _WelcomeState extends State<Welcome> {
                       shadowColor: Colors.black,
                       elevation: 20),
                   onPressed: () {
-                    debugPrint("Next Page");
-                    Navigator.pushNamedAndRemoveUntil(
-                        context, '/login', (route) => false);
+                    debugPrint("Next Login Page");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Regis()),
+                    );
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),

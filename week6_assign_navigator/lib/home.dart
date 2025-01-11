@@ -27,6 +27,8 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         // Appbar
         title: Image.asset("assets/images/evlogo5.png", width: 60),
+        automaticallyImplyLeading: false,
+
         actions: [
           IconButton(
               onPressed: () {
@@ -42,21 +44,12 @@ class _HomeState extends State<Home> {
               debugPrint("My Profile");
             },
             icon: const Icon(
-              Icons.account_circle,
+              Icons.manage_accounts_rounded,
               size: 32,
               color: Colors.white,
             ),
           ),
-          IconButton(
-            onPressed: () {
-              debugPrint("My Profile");
-            },
-            icon: const Icon(
-              Icons.settings_sharp,
-              size: 32,
-              color: Colors.white,
-            ),
-          ),
+          
         ],
       ),
       body: SingleChildScrollView(
@@ -590,7 +583,7 @@ class _HomeState extends State<Home> {
 
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 90),
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
@@ -603,63 +596,53 @@ class _HomeState extends State<Home> {
                               fontSize: 16),
                         ),
                         onPressed: () {
-                          double cur = double.parse(current.text);
-                          double tar = double.parse(target.text);
-                          double rate = double.parse(ratecharg.text);
-                          double vol = double.parse(voltage.text);
-                          double bat = double.parse(battery.text);
-                          double eff = double.parse(efficiency.text);
+                          if (current.text.isNotEmpty ||
+                              target.text.isNotEmpty ||
+                              ratecharg.text.isNotEmpty ||
+                              voltage.text.isNotEmpty ||
+                              battery.text.isNotEmpty ||
+                              efficiency.text.isNotEmpty) {
+                            double cur = double.parse(current.text);
+                            double tar = double.parse(target.text);
+                            double rate = double.parse(ratecharg.text);
+                            double vol = double.parse(voltage.text);
+                            double bat = double.parse(battery.text);
+                            double eff = double.parse(efficiency.text);
 
-                          double cal_power = (vol * rate) / 1000;
-                          double cal_time =
-                              ((tar - cur) * bat) / (cal_power * eff) / 100;
+                            double cal_power = (vol * rate) / 1000;
+                            double cal_time =
+                                ((tar - cur) * bat) / (cal_power * eff) / 100;
 
-                          (debugPrint("Calculating $cal_time & $cal_power"));
-                          setState(() {
-                            power = '$cal_power';
-                            time = cal_time.toStringAsFixed(3);
-                          });
+                            (debugPrint("Calculating $cal_time & $cal_power"));
+                            setState(() {
+                              power = '$cal_power';
+                              time = cal_time.toStringAsFixed(3);
+                            });
+                          }else{
+                            debugPrint("Error");
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor:
                                 const Color.fromARGB(255, 19, 16, 16),
                             elevation: 10),
                       ),
+                      ElevatedButton(
+                        child: Text(
+                          "BACK",
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 16),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white, elevation: 10),
+                      ),
                     ],
                   ),
-                ),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Icon(Icons.arrow_back_ios),
-                        TextButton(
-                          onPressed: () {
-                            debugPrint("Back");
-                            Navigator.pop(context);
-                          },
-                          child: Text(
-                            "Back",
-                            style: TextStyle(
-                                color: Colors.black, fontFamily: "Montserrat"),
-                          ),
-                          
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-
-                        Text(
-                          "NEXT",
-                          style: TextStyle(fontFamily: "Montserrat"),
-                        ),
-                        Icon(Icons.arrow_forward_ios),
-                      ],
-                    ),
-                  ],
                 ),
               ], // Wraped with column --
             ),

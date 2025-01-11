@@ -1,5 +1,6 @@
 import 'package:assignment_car_charging_ui/home.dart';
-import 'package:assignment_car_charging_ui/login.dart';
+import 'package:assignment_car_charging_ui/info.dart';
+import 'package:assignment_car_charging_ui/regis.dart';
 import 'package:assignment_car_charging_ui/welcome.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,6 @@ class Appme extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(
           seedColor: const Color.fromARGB(255, 255, 255, 255),
         ),
-        
         useMaterial3: true,
         appBarTheme: const AppBarTheme(
           color: Color.fromARGB(255, 19, 16, 16),
@@ -26,9 +26,10 @@ class Appme extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/' : (context) => Welcome(),
+        '/': (context) => Welcome(),
         '/home': (context) => Home(),
-        '/login': (context) => Login(),
+        '/regis': (context) => Regis(),
+        '/info': (context) => Info(),
       },
       //home: Welcome(),
     );
