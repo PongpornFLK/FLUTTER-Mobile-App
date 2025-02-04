@@ -138,7 +138,7 @@ class _WelcomeState extends State<Welcome> {
               ),
               Padding(
                 padding:
-                    const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black,
@@ -175,117 +175,97 @@ class _WelcomeState extends State<Welcome> {
                 ),
               ),
               Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      shadowColor: Colors.black,
-                      elevation: 20),
-                  onPressed: () {
-                    debugPrint("Next Login Page");
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Test()),
-                    );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "TEST  ",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: "Montserrat",
-                              fontWeight: FontWeight.w600,
-                              fontSize: 20),
+                padding: const EdgeInsets.only(top: 0 , bottom: 20 , left: 15 , right: 15),
+                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          shadowColor: Colors.grey,
+                          elevation: 10),
+                      onPressed: () {
+                        debugPrint("Next Login Page");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Test()),
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "TEST",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: "Montserrat",
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16),
+                            ),
+                          ],
                         ),
-                        Icon(
-                          Icons.arrow_forward_ios_rounded,
-                          size: 24,
-                          color: Colors.white,
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      shadowColor: Colors.black,
-                      elevation: 20),
-                  onPressed: () {
-                    debugPrint("Next Login Page");
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Futures()),
-                    );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Future  ",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: "Montserrat",
-                              fontWeight: FontWeight.w600,
-                              fontSize: 20),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          shadowColor: Colors.grey,
+                          elevation: 10),
+                      onPressed: () {
+                        debugPrint("Next Login Page");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Futures()),
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "FUTURE",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: "Montserrat",
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16),
+                            ),
+                          ],
                         ),
-                        Icon(
-                          Icons.arrow_forward_ios_rounded,
-                          size: 24,
-                          color: Colors.white,
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.black,
-                      shadowColor: Colors.black,
-                      elevation: 20),
-                  onPressed: () {
-                    debugPrint("Next Login Page");
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Httpweb()),
-                    );
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "HTTP  ",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: "Montserrat",
-                              fontWeight: FontWeight.w600,
-                              fontSize: 20),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          shadowColor: Colors.grey,
+                          elevation: 10),
+                      onPressed: () {
+                        debugPrint("Next Login Page");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Httpweb()),
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "HTTP",
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: "Montserrat",
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 16),
+                            ),
+                          ],
                         ),
-                        Icon(
-                          Icons.arrow_forward_ios_rounded,
-                          size: 24,
-                          color: Colors.white,
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
+                  ],
                 ),
               ),
             ], // Wraped with column --

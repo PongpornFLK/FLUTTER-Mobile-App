@@ -46,53 +46,54 @@ class _TestState extends State<Test> {
           ),
         ],
       ),
-      body: Center(
-        child:
-            //ListView(
-            //  children: [
-            //    ListTile(
-            //      leading: Image.asset('assets/images/ora-car2.png'),
-            //      trailing: Icon(Icons.arrow_circle_right_outlined),
-            //      title: Text("Back"),
-            //      tileColor: Colors.yellow[600],
-            //      subtitle: Text("Back to Welcome"),
-            //      onTap: () => Navigator.push(
-            //          context, MaterialPageRoute(builder: (context) => Welcome())),
-            //    ),
-            //    ListTile(
-            //      leading: Icon(Icons.arrow_circle_right_rounded),
-            //      title: Text("Back"),
-            //      tileColor: Colors.yellow[600],
-            //      subtitle: Text("Back to Welcome"),
-            //      onTap: () => Navigator.push(
-            //          context, MaterialPageRoute(builder: (context) => Welcome())),
-            //    ),
-            //
-            //  ],
-            //),
-            // Listview.Builder = ตัวสร้าง item เป็น code
-            //
-            ListView.separated(
-                // มีเส้นคั่น
-                itemBuilder: (context, index) => ListTile(
-                      title: Text(
-                        product[index],
-                        style: TextStyle(fontSize: 20),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Center(
+          child:
+              //ListView(
+              //  children: [
+              //    ListTile(
+              //      leading: Image.asset('assets/images/ora-car2.png'),
+              //      trailing: Icon(Icons.arrow_circle_right_outlined),
+              //      title: Text("Back"),
+              //      tileColor: Colors.yellow[600],
+              //      subtitle: Text("Back to Welcome"),
+              //      onTap: () => Navigator.push(
+              //          context, MaterialPageRoute(builder: (context) => Welcome())),
+              //    ),
+              //    ListTile(
+              //      leading: Icon(Icons.arrow_circle_right_rounded),
+              //      title: Text("Back"),
+              //      tileColor: Colors.yellow[600],
+              //      subtitle: Text("Back to Welcome"),
+              //      onTap: () => Navigator.push(
+              //          context, MaterialPageRoute(builder: (context) => Welcome())),
+              //    ),
+              //
+              //  ],
+              //),
+
+              ListView.separated(
+                  // มีเส้นคั่น
+                  itemBuilder: (context, index) => ListTile(
+                        title: Text(
+                          product[index],
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        leading: Image.asset("assets/images/ora-car2.png"),
+                        tileColor: Colors.yellow[600],
+                        subtitle: Text("Text"),
                       ),
-                      leading: Image.asset("assets/images/ora-car2.png"),
-                      tileColor: Colors.yellow[600],
-                      subtitle: Text("Text"),
-                    ),
-                separatorBuilder: (context, int index) => const Divider(),
-                itemCount: product.length),
-                
+                  separatorBuilder: (context, int index) => const Divider(),
+                  itemCount: product.length),
+        ),
       ),
-      
-
-      // Synchronous , Asynchronous
-
-      // FutureBuilder
-
     );
   }
 }
+// ListView , ListView.Builder , ListView.custom , ListView.seperated
+
+// Listview.Builder = ตัวสร้าง item เป็น code
+
+// Synchronous , Asynchronous
+// FutureBuilder

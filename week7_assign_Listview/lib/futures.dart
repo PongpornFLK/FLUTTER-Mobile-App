@@ -17,23 +17,34 @@ class _FuturesState extends State<Futures> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.amberAccent,
-          title: const Text('FutureBuilder Page'),
+      appBar: AppBar(
+        backgroundColor: Colors.amberAccent,
+        title: const Text('FutureBuilder Page'),
+      ),
+      body: Center(
+        child: Column(
+          children: [
+            FutureBuilder(
+              future: fetchData(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Text('Result: ${snapshot.data}',
+                      style: TextStyle(fontSize: 20));
+                } else if (snapshot.hasError) {
+                  return Text('${snapshot.error}');
+                }
+                return const CircularProgressIndicator();
+              },
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("Back"),
+            ),
+          ],
         ),
-        body: Center(
-          child: FutureBuilder(
-            future: fetchData(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Text('Result: ${snapshot.data}',
-                    style: TextStyle(fontSize: 20));
-              } else if (snapshot.hasError) {
-                return Text('${snapshot.error}');
-              }
-              return const CircularProgressIndicator();
-            },
-          ),
-        ));
+      ),
+    );
   }
 }

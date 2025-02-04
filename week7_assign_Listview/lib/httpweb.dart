@@ -3,21 +3,20 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-Future<String> fetchData() async{
-  final response = await http.get(Uri.parse('https://itpart.net/mobile/api/product0.php'));
+Future<String> fetchData() async {
+  final response =
+      await http.get(Uri.parse('https://itpart.net/mobile/api/product0.php'));
 
-  if(response.statusCode == 200 ){
+  if (response.statusCode == 200) {
     final jSONbody = json.decode(response.body);
     String strBody = response.body.toString();
     debugPrint(strBody);
 
     return strBody;
-
-  }else{
+  } else {
     throw Exception('problem..');
   }
 }
-
 
 class Httpweb extends StatefulWidget {
   const Httpweb({super.key});
@@ -55,21 +54,38 @@ class _HttpwebState extends State<Httpweb> {
               color: Colors.white,
             ),
           ),
-          
         ],
       ),
-      body: FutureBuilder(
-            future: fetchData(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return Text('Result: ${snapshot.data}',
-                    style: TextStyle(fontSize: 16));
-              } else if (snapshot.hasError) {
-                return Text('${snapshot.error}');
-              }
-              return const CircularProgressIndicator();
-            },
-          ),
+      body: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Column(
+          children: [
+            FutureBuilder(
+              future: fetchData(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Text('Result: ${snapshot.data}',
+                      style: TextStyle(
+                          fontSize: 14,
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.bold));
+                } else if (snapshot.hasError) {
+                  return Text('${snapshot.error}');
+                }
+                return const CircularProgressIndicator();
+              },
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("Back"),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
+
+// FutureBuilder คือ Widget ที่ใช้ในการสร้าง UI โดยใช้ข้อมูลจาก Future ซึ่งเป็นการดึงข้อมูลจาก API มาแสดงผล
