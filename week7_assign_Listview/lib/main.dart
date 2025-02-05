@@ -1,10 +1,9 @@
+
 import 'package:assignment_car_charging_ui/home.dart';
 import 'package:assignment_car_charging_ui/info.dart';
 import 'package:assignment_car_charging_ui/regis.dart';
 import 'package:assignment_car_charging_ui/welcome.dart';
 import 'package:assignment_car_charging_ui/test.dart';
-import 'package:assignment_car_charging_ui/futures.dart';
-import 'package:assignment_car_charging_ui/httpweb.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -34,10 +33,8 @@ class Appme extends StatelessWidget {
         '/regis': (context) => Regis(),
         '/info': (context) => Info(),
         '/test': (context) => Test(),
-        '/futures': (context) => Futures(),
-        '/http': (context) => Httpweb(),
-
       },
+      //home : Detail(productId: 5);
       //home: Welcome(),
     );
   }

@@ -1,6 +1,4 @@
-import 'package:assignment_car_charging_ui/futures.dart';
 import 'package:assignment_car_charging_ui/home.dart';
-import 'package:assignment_car_charging_ui/httpweb.dart';
 import 'package:assignment_car_charging_ui/regis.dart';
 import 'package:assignment_car_charging_ui/test.dart';
 import 'package:flutter/material.dart';
@@ -207,64 +205,7 @@ class _WelcomeState extends State<Welcome> {
                         ),
                       ),
                     ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          shadowColor: Colors.grey,
-                          elevation: 10),
-                      onPressed: () {
-                        debugPrint("Next Login Page");
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Futures()),
-                        );
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "FUTURE",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: "Montserrat",
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          shadowColor: Colors.grey,
-                          elevation: 10),
-                      onPressed: () {
-                        debugPrint("Next Login Page");
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Httpweb()),
-                        );
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "HTTP",
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontFamily: "Montserrat",
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 16),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    
                   ],
                 ),
               ),

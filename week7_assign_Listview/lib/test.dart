@@ -16,76 +16,97 @@ class _TestState extends State<Test> {
     'Product 3',
   ];
 
+  final List<String> detail = <String>[
+    'Blue',
+    'Green',
+    'Red',
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        // Appbar
-        title: Image.asset("assets/images/evlogo5.png", width: 60),
-        automaticallyImplyLeading: false,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 255, 222, 222)),
+        useMaterial3: true,
+        
+        appBarTheme: const AppBarTheme(
+          color: Color.fromARGB(255, 19, 16, 16),
+        ),
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          // Appbar
+          title: Image.asset("assets/images/evlogo5.png", width: 60),
+          automaticallyImplyLeading: false,
+          
 
-        actions: [
-          IconButton(
+          actions: [
+            IconButton(
+                onPressed: () {
+                  debugPrint("List menus");
+                },
+                icon: const Icon(
+                  Icons.format_list_bulleted,
+                  size: 32,
+                  color: Colors.white,
+                )),
+            IconButton(
               onPressed: () {
-                debugPrint("List menus");
+                debugPrint("My Profile");
               },
               icon: const Icon(
-                Icons.format_list_bulleted,
+                Icons.manage_accounts_rounded,
                 size: 32,
                 color: Colors.white,
-              )),
-          IconButton(
-            onPressed: () {
-              debugPrint("My Profile");
-            },
-            icon: const Icon(
-              Icons.manage_accounts_rounded,
-              size: 32,
-              color: Colors.white,
+              ),
             ),
-          ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Center(
-          child:
-              //ListView(
-              //  children: [
-              //    ListTile(
-              //      leading: Image.asset('assets/images/ora-car2.png'),
-              //      trailing: Icon(Icons.arrow_circle_right_outlined),
-              //      title: Text("Back"),
-              //      tileColor: Colors.yellow[600],
-              //      subtitle: Text("Back to Welcome"),
-              //      onTap: () => Navigator.push(
-              //          context, MaterialPageRoute(builder: (context) => Welcome())),
-              //    ),
-              //    ListTile(
-              //      leading: Icon(Icons.arrow_circle_right_rounded),
-              //      title: Text("Back"),
-              //      tileColor: Colors.yellow[600],
-              //      subtitle: Text("Back to Welcome"),
-              //      onTap: () => Navigator.push(
-              //          context, MaterialPageRoute(builder: (context) => Welcome())),
-              //    ),
-              //
-              //  ],
-              //),
-
-              ListView.separated(
-                  // มีเส้นคั่น
-                  itemBuilder: (context, index) => ListTile(
-                        title: Text(
-                          product[index],
-                          style: TextStyle(fontSize: 20),
+          ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView.separated(
+                    // มีเส้นคั่น
+                    itemBuilder: (context, index) => ListTile(
+                          title: Text(
+                            product[index],
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontFamily: "Montserrat",
+                                fontWeight: FontWeight.bold),
+                          ),
+                          leading: Image.asset("assets/images/ora-car2.png"),
+                          tileColor: Colors.yellow[600],
+                          subtitle: Text(
+                            detail[index],
+                            style: TextStyle(fontFamily: "Montserrat"),
+                          ),
                         ),
-                        leading: Image.asset("assets/images/ora-car2.png"),
-                        tileColor: Colors.yellow[600],
-                        subtitle: Text("Text"),
-                      ),
-                  separatorBuilder: (context, int index) => const Divider(),
-                  itemCount: product.length),
+                    separatorBuilder: (context, int index) => const Divider(),
+                    itemCount: product.length),
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.black,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  "BACK",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: "Montserrat",
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+              
+            ],
+          ),
         ),
       ),
     );
