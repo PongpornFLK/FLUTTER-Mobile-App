@@ -15,7 +15,9 @@ class MyListPage extends StatefulWidget {
 class _MyListPageState extends State<MyListPage> {
   HttpService httpService = HttpService();
 
-  String baseUrl = 'https://itpart.net/mobile/api/'; // API json
+  // defined static const
+  static const baseUrl = 'https://itpart.net/mobile/api/products.php'; // API json
+
   String baseImgUrl = 'https://itpart.net/mobile/images/'; // base Image
 
   @override

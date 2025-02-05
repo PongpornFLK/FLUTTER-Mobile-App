@@ -38,7 +38,7 @@ class Appme extends StatelessWidget {
         '/test': (context) => Test(),
         '/futures': (context) => Futures(),
         '/http': (context) => Httpweb(),
-        '/detail': (context) => Detail(productId: 5),
+        '/detail': (context) => Detail(productId: 3),
         '/mylist': (context) => MyListPage(),
       },
       //home : Detail(productId: 5);
