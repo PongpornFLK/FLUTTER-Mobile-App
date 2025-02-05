@@ -23,7 +23,7 @@ class _MyHomePageState extends State<MyHomePage> {
   /// Load the initial counter value from persistent storage on start,
   /// or fallback to 0 if it doesn't exist.
   Future<void> _loadCounter() async {
-    debugPrint('load sharedPref..');
+    debugPrint('loading sharedPref..');
     final prefs = await SharedPreferences.getInstance();
     _token = prefs.getString('token');
     debugPrint('token: $_token');
@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> _incrementCounter() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('token', 'abcd1234');
+    await prefs.setString('token', 'Success');
     debugPrint('saved token..');
     setState(() {
       _counter = (prefs.getInt('counter') ?? 0) + 1;
@@ -60,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'Click me :',
             ),
             Text(
               '$_counter',
@@ -71,9 +71,10 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: _incrementCounter , 
         tooltip: 'Increment',
         child: const Icon(Icons.add),
+        
       ),
     );
   }
