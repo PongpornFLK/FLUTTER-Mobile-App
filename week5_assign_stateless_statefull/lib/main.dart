@@ -24,7 +24,7 @@ class Appme extends StatelessWidget {
           color: Color.fromARGB(255, 19, 16, 16),
         ),
       ),
-      home: Home(),
+      home: const Home(),
     );
   }
 }

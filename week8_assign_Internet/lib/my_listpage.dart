@@ -48,7 +48,7 @@ class _MyListPageState extends State<MyListPage> {
                   },
                 ),
               ),
-              ElevatedButton(onPressed: () {}, child: Text("+"))
+              ElevatedButton(onPressed: () {}, child: const Text("+"))
             ],
           ),
         ),
@@ -65,7 +65,7 @@ class _MyListPageState extends State<MyListPage> {
           width: 86,
         ),
         title: Text(products[index].title,
-            style: TextStyle(fontSize: 18)),
+            style: const TextStyle(fontSize: 18)),
         subtitle: Text(products[index].description),
         onTap: () => Navigator.push(
             context,

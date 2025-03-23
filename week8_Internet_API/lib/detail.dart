@@ -21,7 +21,7 @@ Future<Product> fetchRecord({required String strUrl}) async {
   });
 
   if (response.statusCode == 200) {
-    debugPrint('${response.body.toString()}');
+    debugPrint(response.body.toString());
     // debugPrint('${jsonDecode(response.body)}');
     return Product.fromJson(jsonDecode(response.body));
   } else {
@@ -77,12 +77,12 @@ class _DetailState extends State<Detail> {
                         Image.network('$baseImgUrl${snapshot.data!.imageUrl}'),
                         const SizedBox(height: 20),
                         Text(snapshot.data!.description,
-                            style: TextStyle(fontSize: 18)),
+                            style: const TextStyle(fontSize: 18)),
                       ],
                     );
                   } else if (snapshot.hasError) {
                     return Text('${snapshot.error}',
-                        style: TextStyle(fontSize: 18));
+                        style: const TextStyle(fontSize: 18));
                   }
                   return const Text('No data available!');
                 },
@@ -92,9 +92,9 @@ class _DetailState extends State<Detail> {
                   backgroundColor: Colors.black,
                 ),
                 onPressed: () {
-                  Navigator.push(context , MaterialPageRoute(builder: (context) => MyListPage() ));
+                  Navigator.push(context , MaterialPageRoute(builder: (context) => const MyListPage() ));
                 },
-                child: Text(
+                child: const Text(
                   "LIST",
                   style: TextStyle(
                       color: Colors.white,

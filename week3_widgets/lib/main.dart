@@ -51,7 +51,7 @@ class Appme extends StatelessWidget {
               Image.network(
                   'https://wallpaper.forfun.com/fetch/9a/9afb26229ec0e7328b6fd6462b247dc1.jpeg?w=1470&r=0.5625'),
 
-              SizedBox(
+              const SizedBox(
                 height: 14,
               ),
 
@@ -71,7 +71,7 @@ class Appme extends StatelessWidget {
                       },
                       icon: const Icon(Icons.warning)),
 
-              SizedBox(
+              const SizedBox(
                 height: 14,
               ),
 
@@ -108,7 +108,7 @@ class Appme extends StatelessWidget {
           onPressed: () {
             debugPrint('Add');
           },
-          child: Text(
+          child: const Text(
             "+",
             style: TextStyle(fontSize: 30),
           ),

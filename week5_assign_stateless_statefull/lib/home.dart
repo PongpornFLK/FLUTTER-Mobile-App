@@ -66,7 +66,7 @@ class _HomeState extends State<Home> {
             child: Column(
               children: [
                 // Part Topic ----------------------------------------------------------------------------
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
@@ -82,13 +82,6 @@ class _HomeState extends State<Home> {
                       vertical: 5.0, horizontal: 20.0),
                   width: 500.0,
                   height: 50.0,
-                  child: Text(
-                    "ORA Good Cat",
-                    style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 22,
-                        fontFamily: "Montserrat"),
-                  ),
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
                       color: const Color.fromARGB(255, 255, 255, 255),
@@ -100,6 +93,13 @@ class _HomeState extends State<Home> {
                           spreadRadius: 3,
                         ),
                       ]),
+                  child: Text(
+                    "ORA Good Cat",
+                    style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        fontSize: 22,
+                        fontFamily: "Montserrat"),
+                  ),
                 ),
                 Padding(
                   padding:
@@ -109,7 +109,7 @@ class _HomeState extends State<Home> {
 
                 // Part Textfeild / Input -----------------------------------------------------------------
 
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
@@ -134,7 +134,7 @@ class _HomeState extends State<Home> {
                         padding: const EdgeInsets.symmetric(vertical: 8),
                         child: TextField(
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             // border: OutlineInputBorder(
                             //   borderSide: BorderSide(
                             //     color: Colors.black,
@@ -150,7 +150,7 @@ class _HomeState extends State<Home> {
                             ),
                           ),
                           style:
-                              TextStyle(fontSize: 15, fontFamily: "Montserrat"),
+                              const TextStyle(fontSize: 15, fontFamily: "Montserrat"),
                           controller: current,
                         ),
                       ),
@@ -163,7 +163,7 @@ class _HomeState extends State<Home> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8),
                         child: TextField(
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               filled: true,
                               fillColor: Colors.white,
                               hintText: "Target SOC%",
@@ -172,7 +172,7 @@ class _HomeState extends State<Home> {
                                 size: 20,
                               )),
                           style:
-                              TextStyle(fontSize: 15, fontFamily: "Montserrat"),
+                              const TextStyle(fontSize: 15, fontFamily: "Montserrat"),
                           controller: target,
                         ),
                       ),
@@ -191,7 +191,7 @@ class _HomeState extends State<Home> {
                         padding: const EdgeInsets.symmetric(vertical: 8),
                         child: TextField(
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               filled: true,
                               fillColor: Colors.white,
                               hintText: "Charg Rate(A)",
@@ -200,7 +200,7 @@ class _HomeState extends State<Home> {
                                 size: 20,
                               )),
                           style:
-                              TextStyle(fontSize: 15, fontFamily: "Montserrat"),
+                              const TextStyle(fontSize: 15, fontFamily: "Montserrat"),
                           controller: ratecharg,
                         ),
                       ),
@@ -214,7 +214,7 @@ class _HomeState extends State<Home> {
                         padding: const EdgeInsets.symmetric(vertical: 8),
                         child: TextField(
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               filled: true,
                               fillColor: Colors.white,
                               hintText: "Voltage (V)",
@@ -223,7 +223,7 @@ class _HomeState extends State<Home> {
                                 size: 20,
                               )),
                           style:
-                              TextStyle(fontSize: 15, fontFamily: "Montserrat"),
+                              const TextStyle(fontSize: 15, fontFamily: "Montserrat"),
                           controller: voltage,
                         ),
                       ),
@@ -242,7 +242,7 @@ class _HomeState extends State<Home> {
                         padding: const EdgeInsets.symmetric(vertical: 8),
                         child: TextField(
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               filled: true,
                               fillColor: Colors.white,
                               hintText: "Bat Capacity",
@@ -251,7 +251,7 @@ class _HomeState extends State<Home> {
                                 size: 20,
                               )),
                           style:
-                              TextStyle(fontSize: 15, fontFamily: "Montserrat"),
+                              const TextStyle(fontSize: 15, fontFamily: "Montserrat"),
                           controller: battery,
                         ),
                       ),
@@ -265,7 +265,7 @@ class _HomeState extends State<Home> {
                         padding: const EdgeInsets.symmetric(vertical: 8),
                         child: TextField(
                           keyboardType: TextInputType.number,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                               filled: true,
                               fillColor: Colors.white,
                               hintText: "Efficiency %",
@@ -274,7 +274,7 @@ class _HomeState extends State<Home> {
                                 size: 20,
                               )),
                           style:
-                              TextStyle(fontSize: 15, fontFamily: "Montserrat"),
+                              const TextStyle(fontSize: 15, fontFamily: "Montserrat"),
                           controller: efficiency,
                         ),
                       ),
@@ -283,7 +283,7 @@ class _HomeState extends State<Home> {
                 ),
 
                 // Part Result and Button Calculated ---------------------------------------------------
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
@@ -300,14 +300,14 @@ class _HomeState extends State<Home> {
                   child: Container(
                     height: 100,
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: <Color>[
-                        const Color(0xFFFEE745),
-                        const Color.fromARGB(255, 252, 216, 36),
-                        const Color.fromARGB(255, 243, 171, 15),
+                      gradient: const LinearGradient(colors: <Color>[
+                        Color(0xFFFEE745),
+                        Color.fromARGB(255, 252, 216, 36),
+                        Color.fromARGB(255, 243, 171, 15),
                         //const Color(0xFFff930f)
                       ], begin: Alignment.centerLeft),
                       borderRadius: BorderRadius.circular(20),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                             blurRadius: 5, spreadRadius: 2, color: Colors.grey),
                       ],
@@ -325,14 +325,14 @@ class _HomeState extends State<Home> {
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(50)),
-                                  child: Icon(Icons.bolt_outlined,
+                                  child: const Icon(Icons.bolt_outlined,
                                       size: 48, color: Colors.amber)),
                             ),
-                            Container(
+                            SizedBox(
                               height: 65,
                               child: Column(
                                 children: [
-                                  Text("Charging Power",
+                                  const Text("Charging Power",
                                       style: TextStyle(
                                           fontSize: 16, color: Colors.black)),
                                   Row(
@@ -340,13 +340,13 @@ class _HomeState extends State<Home> {
                                         MainAxisAlignment.spaceAround,
                                     children: [
                                       Text(power,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontFamily: "Montserrat",
                                               color: Colors.black,
                                               fontSize: 28,
                                               fontWeight: FontWeight.w600)),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
+                                      const Padding(
+                                        padding: EdgeInsets.only(
                                             top: 7, left: 7),
                                         child: Text(
                                           "kWh",
@@ -370,14 +370,14 @@ class _HomeState extends State<Home> {
                                   decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(50)),
-                                  child: Icon(Icons.av_timer,
+                                  child: const Icon(Icons.av_timer,
                                       size: 48, color: Colors.amber)),
                             ),
-                            Container(
+                            SizedBox(
                               height: 65,
                               child: Column(
                                 children: [
-                                  Text("Charging Time",
+                                  const Text("Charging Time",
                                       style: TextStyle(
                                           fontSize: 16, color: Colors.black)),
                                   Row(
@@ -385,13 +385,13 @@ class _HomeState extends State<Home> {
                                         MainAxisAlignment.spaceAround,
                                     children: [
                                       Text(time,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontFamily: "Montserrat",
                                               color: Colors.black,
                                               fontSize: 28,
                                               fontWeight: FontWeight.w600)),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
+                                      const Padding(
+                                        padding: EdgeInsets.only(
                                             top: 7, left: 7),
                                         child: Text(
                                           "hrs",
@@ -594,13 +594,6 @@ class _HomeState extends State<Home> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       ElevatedButton(
-                        child: Text(
-                          "CALCULATE",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w900,
-                              fontSize: 16),
-                        ),
                         onPressed: () {
                           double cur = double.parse(current.text);
                           double tar = double.parse(target.text);
@@ -609,26 +602,33 @@ class _HomeState extends State<Home> {
                           double bat = double.parse(battery.text);
                           double eff = double.parse(efficiency.text);
 
-                          double cal_power = (vol * rate) / 1000;
-                          double cal_time =
-                              ((tar - cur) * bat) / (cal_power * eff) / 100;
+                          double calPower = (vol * rate) / 1000;
+                          double calTime =
+                              ((tar - cur) * bat) / (calPower * eff) / 100;
 
-                          (debugPrint("Calculating $cal_time & $cal_power"));
+                          (debugPrint("Calculating $calTime & $calPower"));
                           setState(() {
-                            power = '$cal_power';
-                            time = cal_time.toStringAsFixed(3);
+                            power = '$calPower';
+                            time = calTime.toStringAsFixed(3);
                           });
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor:
                                 const Color.fromARGB(255, 19, 16, 16),
                             elevation: 10),
+                        child: Text(
+                          "CALCULATE",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 16),
+                        ),
                       ),
                     ],
                   ),
                 ),
 
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(

@@ -37,7 +37,7 @@ class HttpService {
     });
 
     if (response.statusCode == 200) {
-      debugPrint('${response.body.toString()}');
+      debugPrint(response.body.toString());
       return Product.fromJson(jsonDecode(response.body));
     } else {
       debugPrint('failed loading data!');

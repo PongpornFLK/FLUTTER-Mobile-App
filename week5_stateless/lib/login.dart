@@ -66,7 +66,7 @@ class _Login extends State<Login> {
             child: Column(
               children: [
                 // Part Result and Button Calculated ---------------------------------------------------
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
@@ -86,13 +86,13 @@ class _Login extends State<Login> {
                       height: 150.0,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(colors: <Color>[
-                          const Color(0xFF7ef29d),
-                          const Color(0xFF099773),
+                        gradient: const LinearGradient(colors: <Color>[
+                          Color(0xFF7ef29d),
+                          Color(0xFF099773),
                         ], begin: Alignment.topLeft),
                         borderRadius: BorderRadius.circular(35),
                       ),
-                      child: Column(
+                      child: const Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text("Charging Power",
@@ -117,25 +117,25 @@ class _Login extends State<Login> {
                       height: 150.0,
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        gradient: LinearGradient(colors: <Color>[
-                          const Color(0xFFFFD700),
-                          const Color(0xFFff930f)
+                        gradient: const LinearGradient(colors: <Color>[
+                          Color(0xFFFFD700),
+                          Color(0xFFff930f)
                         ], begin: Alignment.topLeft),
                         borderRadius: BorderRadius.circular(35),
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Text("Charging Time",
+                          const Text("Charging Time",
                               style: TextStyle(
                                   fontWeight: FontWeight.w900,
                                   color: Colors.white)),
-                          Icon(Icons.av_timer, size: 56, color: Colors.white),
-                          Text("$output1",
-                              style: TextStyle(
+                          const Icon(Icons.av_timer, size: 56, color: Colors.white),
+                          Text(output1,
+                              style: const TextStyle(
                                   fontFamily: "Montserrat",
                                   color: Colors.white)),
-                          Text("hrs",
+                          const Text("hrs",
                               style: TextStyle(
                                   fontWeight: FontWeight.w900,
                                   color: Colors.white)),
@@ -152,29 +152,22 @@ class _Login extends State<Login> {
                     children: [
                       TextField(
                         // การ input แล้วแสดงผล
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: "Name",
                         ),
                         controller: control1,
                       ),
                       TextField(
                         // การ input แล้วแสดงผล
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: "Nickname",
                         ),
                         controller: control2,
                       ),
                       ElevatedButton(
-                        child: Text(
-                          "Show name",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w900,
-                              fontSize: 16),
-                        ),
                         onPressed: () {
                           String input = control1.text;
-                          (debugPrint("$input"));
+                          (debugPrint(input));
                           // set state
                           setState(() {
                             output1 = 'Show $input';
@@ -184,18 +177,18 @@ class _Login extends State<Login> {
                           backgroundColor:
                               const Color.fromARGB(255, 19, 16, 16),
                         ),
-                      ),
-                      ElevatedButton(
                         child: Text(
-                          "Show nickname",
+                          "Show name",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w900,
                               fontSize: 16),
                         ),
+                      ),
+                      ElevatedButton(
                         onPressed: () {
                           String input2 = control2.text;
-                          (debugPrint("$input2"));
+                          (debugPrint(input2));
                           // set state
                           setState(() {
                             output2 = 'My name is $input2';
@@ -205,15 +198,15 @@ class _Login extends State<Login> {
                           backgroundColor:
                               const Color.fromARGB(255, 19, 16, 16),
                         ),
-                      ),
-                      ElevatedButton(
                         child: Text(
-                          "CALCULATE",
+                          "Show nickname",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w900,
                               fontSize: 16),
                         ),
+                      ),
+                      ElevatedButton(
                         onPressed: () {
                           (debugPrint("Calculating"));
                           // set state
@@ -225,15 +218,15 @@ class _Login extends State<Login> {
                           backgroundColor:
                               const Color.fromARGB(255, 19, 16, 16),
                         ),
-                      ),
-                      ElevatedButton(
                         child: Text(
-                          "CALCULATE-2",
+                          "CALCULATE",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w900,
                               fontSize: 16),
                         ),
+                      ),
+                      ElevatedButton(
                         onPressed: () {
                           (debugPrint("Calculating"));
                           // set state
@@ -246,35 +239,35 @@ class _Login extends State<Login> {
                           backgroundColor:
                               const Color.fromARGB(255, 19, 16, 16),
                         ),
-                      ),
-                      Text(
-                        'Shows the result',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      Text(
-                        '$output1',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      Text(
-                        '$output2',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      TextField(
-                        decoration: InputDecoration(labelText: 'num1'),
-                        controller: num1,
-                      ),
-                      TextField(
-                        decoration: InputDecoration(labelText: 'num2'),
-                        controller: num2,
-                      ),
-                      ElevatedButton(
                         child: Text(
-                          "Cal num",
+                          "CALCULATE-2",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w900,
                               fontSize: 16),
                         ),
+                      ),
+                      const Text(
+                        'Shows the result',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      Text(
+                        output1,
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                      Text(
+                        output2,
+                        style: const TextStyle(fontSize: 20),
+                      ),
+                      TextField(
+                        decoration: const InputDecoration(labelText: 'num1'),
+                        controller: num1,
+                      ),
+                      TextField(
+                        decoration: const InputDecoration(labelText: 'num2'),
+                        controller: num2,
+                      ),
+                      ElevatedButton(
                         onPressed: () {
                           double input = double.parse(num1
                               .text); // tryparse คือการแปลงค่าที่รับมาเป็น double // parse
@@ -291,15 +284,15 @@ class _Login extends State<Login> {
                           backgroundColor:
                               const Color.fromARGB(255, 19, 16, 16),
                         ),
-                      ),
-                      ElevatedButton(
                         child: Text(
-                          "Next Page",
+                          "Cal num",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.w900,
                               fontSize: 16),
                         ),
+                      ),
+                      ElevatedButton(
                         onPressed: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
@@ -309,6 +302,13 @@ class _Login extends State<Login> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
                               const Color.fromARGB(255, 19, 16, 16),
+                        ),
+                        child: Text(
+                          "Next Page",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 16),
                         ),
                       ),
                     ],

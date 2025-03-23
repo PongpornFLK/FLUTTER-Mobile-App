@@ -49,7 +49,7 @@ class About extends StatelessWidget { // use : stl
               child: Column(
                 children: [
                   // Part Topic ----------------------------------------------------------------------------
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
@@ -65,13 +65,6 @@ class About extends StatelessWidget { // use : stl
                         vertical: 5.0, horizontal: 20.0),
                     width: 500.0,
                     height: 50.0,
-                    child: Text(
-                      "ORA Good Cat",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w300,
-                          fontSize: 22,
-                          fontFamily: "Montserrat"),
-                    ),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                         color: const Color.fromARGB(255, 255, 255, 255),
@@ -83,6 +76,13 @@ class About extends StatelessWidget { // use : stl
                             spreadRadius: 3,
                           ),
                         ]),
+                    child: Text(
+                      "ORA Good Cat",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w300,
+                          fontSize: 22,
+                          fontFamily: "Montserrat"),
+                    ),
                   ),
                   Padding(
                     padding:
@@ -92,7 +92,7 @@ class About extends StatelessWidget { // use : stl
           
                   // Part Textfeild / Input -----------------------------------------------------------------
                   
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
@@ -112,7 +112,7 @@ class About extends StatelessWidget { // use : stl
                         width: 170.0,
                         height: 60.0,
                         // color: Colors.white,
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             // border: OutlineInputBorder(
                             //   borderSide: BorderSide(
@@ -133,7 +133,7 @@ class About extends StatelessWidget { // use : stl
                             vertical: 5.0, horizontal: 10.0),
                         width: 170.0,
                         height: 60.0,
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
@@ -154,7 +154,7 @@ class About extends StatelessWidget { // use : stl
                             vertical: 5.0, horizontal: 10.0),
                         width: 170.0,
                         height: 60.0,
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
@@ -169,7 +169,7 @@ class About extends StatelessWidget { // use : stl
                             vertical: 5.0, horizontal: 10.0),
                         width: 170.0,
                         height: 60.0,
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
@@ -189,7 +189,7 @@ class About extends StatelessWidget { // use : stl
                             vertical: 5.0, horizontal: 10.0),
                         width: 170.0,
                         height: 60.0,
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
@@ -204,7 +204,7 @@ class About extends StatelessWidget { // use : stl
                             vertical: 5.0, horizontal: 10.0),
                         width: 170.0,
                         height: 60.0,
-                        child: TextField(
+                        child: const TextField(
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
@@ -218,7 +218,7 @@ class About extends StatelessWidget { // use : stl
                   ),
           
                   // Part Result and Button Calculated ---------------------------------------------------
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
@@ -238,13 +238,13 @@ class About extends StatelessWidget { // use : stl
                         height: 150.0,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(colors: <Color>[
-                            const Color(0xFF7ef29d),
-                            const Color(0xFF099773),
+                          gradient: const LinearGradient(colors: <Color>[
+                            Color(0xFF7ef29d),
+                            Color(0xFF099773),
                           ], begin: Alignment.topLeft),
                           borderRadius: BorderRadius.circular(35),
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text("Charging Power",
@@ -269,13 +269,13 @@ class About extends StatelessWidget { // use : stl
                         height: 150.0,
                         alignment: Alignment.center,
                         decoration: BoxDecoration(
-                          gradient: LinearGradient(colors: <Color>[
-                            const Color(0xFFFFD700),
-                            const Color(0xFFff930f)
+                          gradient: const LinearGradient(colors: <Color>[
+                            Color(0xFFFFD700),
+                            Color(0xFFff930f)
                           ], begin: Alignment.topLeft),
                           borderRadius: BorderRadius.circular(35),
                         ),
-                        child: Column(
+                        child: const Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Text("Charging Time",
@@ -303,13 +303,6 @@ class About extends StatelessWidget { // use : stl
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
                         ElevatedButton(
-                          child: Text(
-                            "CALCULATE",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w900,
-                                fontSize: 16),
-                          ),
                           onPressed: () {
                             (debugPrint("Calculating"));
                           },
@@ -317,16 +310,16 @@ class About extends StatelessWidget { // use : stl
                             backgroundColor:
                                 const Color.fromARGB(255, 19, 16, 16),
                           ),
+                          child: Text(
+                            "CALCULATE",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w900,
+                                fontSize: 16),
+                          ),
                         ),
 
                         ElevatedButton(
-                        child: Text(
-                          "Back Page",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w900,
-                              fontSize: 16),
-                        ),
                         onPressed: () {
                           Navigator.pop(context);
                           
@@ -334,6 +327,13 @@ class About extends StatelessWidget { // use : stl
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
                               const Color.fromARGB(255, 19, 16, 16),
+                        ),
+                        child: Text(
+                          "Back Page",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 16),
                         ),
                       ),
                       ],

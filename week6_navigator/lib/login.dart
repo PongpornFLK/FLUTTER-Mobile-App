@@ -58,7 +58,7 @@ class _Login extends State<Login> {
                 width: 1000,
                 height: 650,
                 margin: const EdgeInsets.all(0),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey,
@@ -67,9 +67,9 @@ class _Login extends State<Login> {
                       )
                     ],
                     gradient: LinearGradient(colors: <Color>[
-                      const Color(0xFFFEE745),
-                      const Color.fromARGB(255, 252, 216, 36),
-                      const Color.fromARGB(255, 243, 171, 15),
+                      Color(0xFFFEE745),
+                      Color.fromARGB(255, 252, 216, 36),
+                      Color.fromARGB(255, 243, 171, 15),
                       //const Color(0xFFff930f)
                     ], begin: Alignment.topLeft),
                     borderRadius: BorderRadius.only(
@@ -86,7 +86,7 @@ class _Login extends State<Login> {
                       Text("pass ${widget.pass}"),
                       ElevatedButton(onPressed: () {
                         Navigator.pop(context);
-                      }, child: Text("Back"),)
+                      }, child: const Text("Back"),)
                     ],
                   ),
                 ),

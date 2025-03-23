@@ -49,7 +49,7 @@ class Welcome extends StatelessWidget {
                 width: 1000,
                 height:650,
                 margin: const EdgeInsets.all(0),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey,
@@ -58,9 +58,9 @@ class Welcome extends StatelessWidget {
                       )
                     ],
                     gradient: LinearGradient(colors: <Color>[
-                      const Color(0xFFFEE745),
-                      const Color.fromARGB(255, 252, 216, 36),
-                      const Color.fromARGB(255, 243, 171, 15),
+                      Color(0xFFFEE745),
+                      Color.fromARGB(255, 252, 216, 36),
+                      Color.fromARGB(255, 243, 171, 15),
                       //const Color(0xFFff930f)
                     ], begin: Alignment.topLeft),
                     borderRadius: BorderRadius.only(
@@ -72,7 +72,7 @@ class Welcome extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "WELCOME TO ",
                         style: TextStyle(
                             fontSize: 24,
@@ -80,7 +80,7 @@ class Welcome extends StatelessWidget {
                             color: Colors.white,
                             fontWeight: FontWeight.w100),
                       ),
-                      Text(
+                      const Text(
                         "EV CHARGING",
                         style: TextStyle(
                             fontSize: 38,
@@ -88,7 +88,7 @@ class Welcome extends StatelessWidget {
                             color: Colors.white,
                             fontWeight: FontWeight.w900),
                       ),
-                      Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      const Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
                             "APPLICATION",
@@ -123,8 +123,8 @@ class Welcome extends StatelessWidget {
                   onPressed: () {
                     debugPrint("Next Page");
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(15.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

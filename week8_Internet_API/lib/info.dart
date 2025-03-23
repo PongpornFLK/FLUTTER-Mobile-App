@@ -57,13 +57,13 @@ class _InfoState extends State<Info> {
                       children: [
                         Text(
                           "Hi , ${widget.name}",
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 32,
                               fontFamily: "Montserrat",
                               fontWeight: FontWeight.w600),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 10),
                           child: Icon(
                             Icons.waving_hand_rounded,
                             color: Colors.yellow,
@@ -72,13 +72,13 @@ class _InfoState extends State<Info> {
                         ),
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 5),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 5),
                       child: Row(
                         children: [
                           Icon(Icons.settings),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 5),
+                            padding: EdgeInsets.symmetric(horizontal: 5),
                             child: Text(
                               "This is your Information",
                               style: TextStyle(
@@ -93,12 +93,12 @@ class _InfoState extends State<Info> {
                   ],
                 ),
               ),
-              Icon(
+              const Icon(
                 Icons.account_circle_outlined,
                 size: 132,
               ),
               
-              Container(
+              SizedBox(
                 
                 height: 400,
                 child: Column(
@@ -109,7 +109,7 @@ class _InfoState extends State<Info> {
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
                           children: [
-                            Row(
+                            const Row(
                               children: [
                                 Text(
                                   "Username",
@@ -132,7 +132,7 @@ class _InfoState extends State<Info> {
                                         horizontal: 10),
                                     child: Text(
                                       "${widget.name}",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontSize: 20,
                                           fontWeight: FontWeight.normal),
@@ -150,7 +150,7 @@ class _InfoState extends State<Info> {
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
                           children: [
-                            Row(
+                            const Row(
                               children: [
                                 Text(
                                   "Password",
@@ -173,7 +173,7 @@ class _InfoState extends State<Info> {
                                         horizontal: 10),
                                     child: Text(
                                       "${widget.pass}",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontSize: 20,
                                           fontWeight: FontWeight.normal),
@@ -191,7 +191,7 @@ class _InfoState extends State<Info> {
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
                           children: [
-                            Row(
+                            const Row(
                               children: [
                                 Text(
                                   "E-mail",
@@ -214,7 +214,7 @@ class _InfoState extends State<Info> {
                                         horizontal: 10),
                                     child: Text(
                                       "${widget.mail}",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontSize: 20,
                                           fontWeight: FontWeight.normal),
@@ -232,7 +232,7 @@ class _InfoState extends State<Info> {
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
                           children: [
-                            Row(
+                            const Row(
                               children: [
                                 Text(
                                   "Phone-number",
@@ -255,7 +255,7 @@ class _InfoState extends State<Info> {
                                         horizontal: 10),
                                     child: Text(
                                       "${widget.phone}",
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontFamily: "Montserrat",
                                           fontSize: 20,
                                           fontWeight: FontWeight.normal),
@@ -282,7 +282,7 @@ class _InfoState extends State<Info> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text(
+                    child: const Text(
                       "BACK",
                       style: TextStyle(color: Colors.white , fontSize: 16 , fontFamily: "Montserrat" , fontWeight: FontWeight.bold),
                     ),
@@ -296,11 +296,11 @@ class _InfoState extends State<Info> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => Home(),
+                          builder: (context) => const Home(),
                         ),
                       );
                     },
-                    child: Text(
+                    child: const Text(
                       "NEXT",
                       style: TextStyle(color: Colors.black , fontSize: 16 , fontFamily: "Montserrat" , fontWeight: FontWeight.bold ),
                     ),

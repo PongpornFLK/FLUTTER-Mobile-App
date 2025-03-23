@@ -75,7 +75,7 @@ class _TestState extends State<Test> {
                     itemBuilder: (context, index) => ListTile(
                           title: Text(
                             product[index],
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 20,
                                 fontFamily: "Montserrat",
                                 fontWeight: FontWeight.bold),
@@ -84,7 +84,7 @@ class _TestState extends State<Test> {
                           tileColor: Colors.yellow[600],
                           subtitle: Text(
                             detail[index],
-                            style: TextStyle(fontFamily: "Montserrat"),
+                            style: const TextStyle(fontFamily: "Montserrat"),
                           ),
                         ),
                     separatorBuilder: (context, int index) => const Divider(),
@@ -97,7 +97,7 @@ class _TestState extends State<Test> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text(
+                child: const Text(
                   "BACK",
                   style: TextStyle(
                       color: Colors.white,
@@ -110,9 +110,9 @@ class _TestState extends State<Test> {
                   backgroundColor: Colors.black,
                 ),
                 onPressed: () {
-                  Navigator.push(context , MaterialPageRoute(builder: (context) => Detail(productId: 1)));
+                  Navigator.push(context , MaterialPageRoute(builder: (context) => const Detail(productId: 1)));
                 },
-                child: Text(
+                child: const Text(
                   "NEXT",
                   style: TextStyle(
                       color: Colors.white,

@@ -25,12 +25,12 @@ class Appme extends StatelessWidget {
                 onPressed: () {
                   debugPrint("Show list");
                 },
-                icon: Icon(Icons.list , size: 32,)),
+                icon: const Icon(Icons.list , size: 32,)),
             IconButton(
                 onPressed: () {
                   debugPrint("Favorite");
                 },
-                icon: Icon(Icons.favorite , size: 32,))
+                icon: const Icon(Icons.favorite , size: 32,))
           ],
         ),
         body: Padding(
@@ -39,7 +39,7 @@ class Appme extends StatelessWidget {
             child: Column(
               // Wraped with column --
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 14,
                 ),
 
@@ -48,7 +48,7 @@ class Appme extends StatelessWidget {
                   width: 200,
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 14,
                 ),
 
@@ -61,7 +61,7 @@ class Appme extends StatelessWidget {
 
                 const Row(
                   children: [
-                    const Text(
+                    Text(
                       "Detail",
                       style:
                           TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
@@ -69,7 +69,7 @@ class Appme extends StatelessWidget {
                   ],
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 14,
                 ),
 
@@ -100,7 +100,7 @@ class Appme extends StatelessWidget {
                   ],
                 ), // Button --
 
-                SizedBox(
+                const SizedBox(
                   height: 14,
                 ),
 
@@ -131,7 +131,7 @@ class Appme extends StatelessWidget {
                   ],
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 14,
                 ),
 
@@ -162,7 +162,7 @@ class Appme extends StatelessWidget {
                   ],
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 14,
                 ),
 
@@ -193,7 +193,7 @@ class Appme extends StatelessWidget {
                   ],
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 14,
                 ),
 
@@ -224,7 +224,7 @@ class Appme extends StatelessWidget {
                   ],
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
 
@@ -249,7 +249,7 @@ class Appme extends StatelessWidget {
                   ],
                 ),
 
-                SizedBox(
+                const SizedBox(
                   height: 40,
                 ),
                 ElevatedButton(

@@ -29,7 +29,7 @@ class _FuturesState extends State<Futures> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return Text('Result: ${snapshot.data}',
-                      style: TextStyle(fontSize: 20));
+                      style: const TextStyle(fontSize: 20));
                 } else if (snapshot.hasError) {
                   return Text('${snapshot.error}');
                 }
@@ -40,7 +40,7 @@ class _FuturesState extends State<Futures> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              child: Text("Back"),
+              child: const Text("Back"),
             ),
           ],
         ),

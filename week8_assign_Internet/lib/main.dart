@@ -29,11 +29,11 @@ class Appme extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => Welcome(),
-        '/home': (context) => Home(),
+        '/home': (context) => const Home(),
         '/regis': (context) => Regis(),
-        '/info': (context) => Info(),
-        '/detail': (context) => Detail(productId: 4),
-        '/mylist': (context) => MyListPage(),
+        '/info': (context) => const Info(),
+        '/detail': (context) => const Detail(productId: 4),
+        '/mylist': (context) => const MyListPage(),
       },
       //home : Detail(productId: 5);
       //home: Welcome(),

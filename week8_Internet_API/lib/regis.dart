@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 
 class Regis extends StatefulWidget {
+  const Regis({super.key});
+
   @override
   State<Regis> createState() => _Regis();
 }
@@ -41,7 +43,7 @@ class _Regis extends State<Regis> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                child: Row(
+                child: const Row(
                   children: [
                     Text(
                       "REGISTER",
@@ -51,7 +53,7 @@ class _Regis extends State<Regis> {
                           fontWeight: FontWeight.w600),
                     ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      padding: EdgeInsets.symmetric(horizontal: 8),
                       child: Icon(
                         Icons.login_rounded,
                         size: 40,
@@ -60,7 +62,7 @@ class _Regis extends State<Regis> {
                   ],
                 ),
               ),
-              Row(
+              const Row(
                 children: [
                   Text(
                     "Please fill in complete information.",
@@ -72,7 +74,7 @@ class _Regis extends State<Regis> {
                 height: 400,
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                         color: Colors.grey,
                         blurRadius: 15,
@@ -89,7 +91,7 @@ class _Regis extends State<Regis> {
                       child: TextField(
                         controller: nameController,
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.account_circle_rounded),
+                          prefixIcon: const Icon(Icons.account_circle_rounded),
                           labelText: "Enter your name",
                           filled: true,
                           fillColor: Colors.grey[100],
@@ -107,7 +109,7 @@ class _Regis extends State<Regis> {
                         controller: passController,
                         obscureText: true,
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.lock),
+                          prefixIcon: const Icon(Icons.lock),
                           labelText: "Password",
                           filled: true,
                           fillColor: Colors.grey[100],
@@ -122,7 +124,7 @@ class _Regis extends State<Regis> {
                       child: TextField(
                         controller: emailController,
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.mail),
+                          prefixIcon: const Icon(Icons.mail),
                           labelText: "Email",
                           filled: true,
                           fillColor: Colors.grey[100],
@@ -138,7 +140,7 @@ class _Regis extends State<Regis> {
                         keyboardType: TextInputType.number,
                         controller: phoneController,
                         decoration: InputDecoration(
-                          prefixIcon: Icon(Icons.phone),
+                          prefixIcon: const Icon(Icons.phone),
                           labelText: "Phone",
                           filled: true,
                           fillColor: Colors.grey[100],
@@ -150,7 +152,7 @@ class _Regis extends State<Regis> {
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 height: 150,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -158,7 +160,7 @@ class _Regis extends State<Regis> {
                   children: [
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          fixedSize: Size.fromHeight(50),
+                          fixedSize: const Size.fromHeight(50),
                           backgroundColor: Colors.amber[300],
                           shadowColor: Colors.black,
                           elevation: 5),
@@ -183,7 +185,7 @@ class _Regis extends State<Regis> {
                           debugPrint("Please fill in complete information.");
                         }
                       },
-                      child: Text(
+                      child: const Text(
                         "SIGN UP",
                         style: TextStyle(
                             color: Colors.black,
@@ -194,7 +196,7 @@ class _Regis extends State<Regis> {
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          fixedSize: Size.fromHeight(50),
+                          fixedSize: const Size.fromHeight(50),
                           backgroundColor: Colors.black,
                           shadowColor: Colors.black,
                           elevation: 5),
@@ -202,7 +204,7 @@ class _Regis extends State<Regis> {
                         debugPrint("Back to Welcome page");
                         Navigator.pop(context);
                       },
-                      child: Text(
+                      child: const Text(
                         "BACK",
                         style: TextStyle(
                             color: Colors.white,

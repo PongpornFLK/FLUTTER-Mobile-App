@@ -4,6 +4,8 @@ import 'package:assignment_car_charging_ui/test.dart';
 import 'package:flutter/material.dart';
 
 class Welcome extends StatefulWidget {
+  const Welcome({super.key});
+
   @override
   State<Welcome> createState() => _WelcomeState();
 }
@@ -36,7 +38,7 @@ class _WelcomeState extends State<Welcome> {
                 width: 1000,
                 height: 650,
                 margin: const EdgeInsets.all(0),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey,
@@ -45,9 +47,9 @@ class _WelcomeState extends State<Welcome> {
                       )
                     ],
                     gradient: LinearGradient(colors: <Color>[
-                      const Color(0xFFFEE745),
-                      const Color.fromARGB(255, 252, 216, 36),
-                      const Color.fromARGB(255, 243, 171, 15),
+                      Color(0xFFFEE745),
+                      Color.fromARGB(255, 252, 216, 36),
+                      Color.fromARGB(255, 243, 171, 15),
                       //const Color(0xFFff930f)
                     ], begin: Alignment.topLeft),
                     borderRadius: BorderRadius.only(
@@ -59,7 +61,7 @@ class _WelcomeState extends State<Welcome> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "WELCOME TO ",
                         style: TextStyle(
                             fontSize: 24,
@@ -67,7 +69,7 @@ class _WelcomeState extends State<Welcome> {
                             color: Colors.white,
                             fontWeight: FontWeight.w100),
                       ),
-                      Text(
+                      const Text(
                         "EV CHARGING",
                         style: TextStyle(
                             fontSize: 38,
@@ -75,7 +77,7 @@ class _WelcomeState extends State<Welcome> {
                             color: Colors.white,
                             fontWeight: FontWeight.w900),
                       ),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
@@ -149,8 +151,8 @@ class _WelcomeState extends State<Welcome> {
                       MaterialPageRoute(builder: (context) => Regis()),
                     );
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.all(15.0),
+                  child: const Padding(
+                    padding: EdgeInsets.all(15.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -185,11 +187,11 @@ class _WelcomeState extends State<Welcome> {
                         debugPrint("Next Login Page");
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Test()),
+                          MaterialPageRoute(builder: (context) => const Test()),
                         );
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
+                      child: const Padding(
+                        padding: EdgeInsets.all(10.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
