@@ -30,40 +30,12 @@ class _TestState extends State<Test> {
         colorScheme: ColorScheme.fromSeed(
             seedColor: const Color.fromARGB(255, 255, 222, 222)),
         useMaterial3: true,
-        
         appBarTheme: const AppBarTheme(
           color: Color.fromARGB(255, 19, 16, 16),
         ),
       ),
       home: Scaffold(
-        appBar: AppBar(
-          // Appbar
-          title: Image.asset("assets/images/evlogo5.png", width: 60),
-          automaticallyImplyLeading: false,
-          
-
-          actions: [
-            IconButton(
-                onPressed: () {
-                  debugPrint("List menus");
-                },
-                icon: const Icon(
-                  Icons.format_list_bulleted,
-                  size: 32,
-                  color: Colors.white,
-                )),
-            IconButton(
-              onPressed: () {
-                debugPrint("My Profile");
-              },
-              icon: const Icon(
-                Icons.manage_accounts_rounded,
-                size: 32,
-                color: Colors.white,
-              ),
-            ),
-          ],
-        ),
+        appBar: AppBar(),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
@@ -72,19 +44,10 @@ class _TestState extends State<Test> {
                 child: ListView.separated(
                     // มีเส้นคั่น
                     itemBuilder: (context, index) => ListTile(
-                          title: Text(
-                            product[index],
-                            style: const TextStyle(
-                                fontSize: 20,
-                                fontFamily: "Montserrat",
-                                fontWeight: FontWeight.bold),
-                          ),
+                          title: Text(product[index]),
                           leading: Image.asset("assets/images/ora-car2.png"),
-                          tileColor: Colors.yellow[600],
-                          subtitle: Text(
-                            detail[index],
-                            style: const TextStyle(fontFamily: "Montserrat"),
-                          ),
+                          tileColor: Colors.yellow,
+                          subtitle: Text(detail[index]),
                         ),
                     separatorBuilder: (context, int index) => const Divider(),
                     itemCount: product.length),
@@ -104,7 +67,6 @@ class _TestState extends State<Test> {
                       fontWeight: FontWeight.bold),
                 ),
               ),
-              
             ],
           ),
         ),

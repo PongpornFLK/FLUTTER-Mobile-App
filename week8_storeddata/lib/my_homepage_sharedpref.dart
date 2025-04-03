@@ -12,33 +12,30 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  String? _token;
+  String? token; // ประกาศ token เป็น null ไว้ก่อน
 
   @override
   void initState() {
+    // โหลดค่าเริ่มต้น
     super.initState();
-    _loadCounter();
+    _loadCounter(); // เรียกใช้ฟังก์ชัน _loadCounter
   }
 
   /// Load the initial counter value from persistent storage on start,
-  /// or fallback to 0 if it doesn't exist.
+
   Future<void> _loadCounter() async {
+    // โหลดค่าจาก sharedPref
     debugPrint('loading sharedPref..');
     final prefs = await SharedPreferences.getInstance();
-    _token = prefs.getString('token');
-    debugPrint('token: $_token');
+    token = prefs.getString('token');
+    debugPrint('token: $token');
     setState(() {
       _counter = prefs.getInt('counter') ?? 0;
     });
   }
 
-  // void _incrementCounter() {
-  //   setState(() {
-  //     _counter++;
-  //   });
-  // }
-
-  Future<void> _incrementCounter() async {
+  Future<void> incrementCounter() async {
+    // เพิ่มค่า counter
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('token', 'Success');
     debugPrint('saved token..');
@@ -51,30 +48,20 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
+      appBar: AppBar(),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Click me :',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            Text('token: $_token'),
+          children: [
+            Text('Click me :'),
+            Text('$_counter'),
+            Text('token: $token'),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter , 
+        onPressed: incrementCounter,
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
-        
+        child: Icon(Icons.add),
       ),
     );
   }

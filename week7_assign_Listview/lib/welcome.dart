@@ -88,11 +88,6 @@ class _WelcomeState extends State<Welcome> {
                                 color: Colors.white,
                                 fontWeight: FontWeight.w900),
                           ),
-                          Icon(
-                            Icons.ev_station_rounded,
-                            size: 52,
-                            color: Colors.white,
-                          ),
                         ],
                       ),
                       Expanded(
@@ -175,8 +170,10 @@ class _WelcomeState extends State<Welcome> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 0 , bottom: 20 , left: 15 , right: 15),
-                child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                padding: const EdgeInsets.only(
+                    top: 0, bottom: 20, left: 15, right: 15),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -207,7 +204,6 @@ class _WelcomeState extends State<Welcome> {
                         ),
                       ),
                     ),
-                    
                   ],
                 ),
               ),
