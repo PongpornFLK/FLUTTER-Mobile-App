@@ -47,6 +47,7 @@ class _WelcomeState extends State<Welcome> {
               Icons.settings_sharp,
               size: 32,
               color: Colors.white,
+              
             ),
           ),
         ],
