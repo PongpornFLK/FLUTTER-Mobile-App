@@ -66,7 +66,7 @@ class _HomeState extends State<Home> {
             const Text(
               "Home",
               style: TextStyle(
-                fontSize: 30,
+                fontSize: 28,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
