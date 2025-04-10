@@ -1,5 +1,9 @@
+import 'package:app_supabase/widget/boxDetail.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:app_supabase/widget/container.dart';
+import 'package:http/http.dart' as http;
+import 'package:app_supabase/model_item/demoData.dart';
 
 Future<void> insertData() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +26,24 @@ class _HomeState extends State<Home> {
   // final dem0_data = Supabase.instance.client
   //     .from('demo')
   //     .stream(primaryKey: ['id']);
+
+  late DemoData dataAPI; // ตัวแปรเก็บข้อมูลที่ได้จาก API
+
+  //ข้อมูลที่ได้จาก API
   @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  Future<DemoData> getData() async {
+    // GET
+    var BaseURL = "https://ipinfo.io/161.185.160.93/geo"; // url api
+    var response = await http.get(Uri.parse(BaseURL));
+    dataAPI = demoDataFromJson(response.body); // Json to Dart Object
+    return dataAPI; // ส่งค่ากลับไปยัง FutureBuilder
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -37,65 +58,75 @@ class _HomeState extends State<Home> {
               color: Colors.white,
             ),
           ),
-          IconButton(
-            onPressed: () {
-              debugPrint("My Profile");
-            },
-            icon: const Icon(
-              Icons.account_circle,
-              size: 32,
-              color: Colors.white,
-            ),
-          ),
-          IconButton(
-            onPressed: () {
-              debugPrint("My Profile");
-            },
-            icon: const Icon(
-              Icons.settings_sharp,
-              size: 32,
-              color: Colors.white,
-            ),
-          ),
         ],
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              "Home",
-              style: TextStyle(
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
+        child: Expanded(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "Home",
+                style: TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
-            ),
 
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/');
-              },
-              child: const Text("Go to Welcome"),
-            ),
+              BoxDetail("Title 1", 1000, 150, Colors.red),
+              BoxDetail("Title 2", 2600.75, 150, Colors.blue),
 
-            // StreamBuilder<List<Map<String, dynamic>>>(
-            //   stream: dem0_data,
-            //   builder: (context, snapshot) {
-            //     if (!snapshot.hasData) {
-            //       return const Center(child: CircularProgressIndicator());
-            //     }
-            //     final demo = snapshot.data!;
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/welcome');
+                },
+                child: const Text("Go to Welcome"),
+              ),
 
-            //     return ListView.builder(
-            //       itemCount: demo.length,
-            //       itemBuilder: (context, index) {
-            //         return ListTile(title: Text(demo[index]['detail']));
-            //       },
-            //     );
-            //   },
-            // ),
-          ],
+              Text("Data"),
+              FutureBuilder(
+                // นำข้อมูลที่ได้จาก API มาแสดงผล โดยใช้ร่วมกับ snapshot
+                future: getData(),
+                builder: (
+                  BuildContext context,
+                  AsyncSnapshot<dynamic>
+                  snapshot, // snapshot มาจาก AsyncSnapshot เพื่อเก็บข้อมูลที่ได้จาก Future ตามที่เรากำหนดไว้ใน FutureBuilder
+                ) {
+                  // ถ้าดึงข้อมูลจาก Future DemoData มาครบแล้ว
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    var result = snapshot.data; // เก็บข้อมูลที่ได้จาก API
+                    return Column(
+                      children: [
+                        Text("Success"),
+                        Text(
+                          result.ip + " " + result.city + " " + result.country,
+                        ),
+                      ], // แสดงข้อมูลที่ได้จาก API
+                    ); // แสดงข้อความ Success
+                  }
+                  return LinearProgressIndicator();
+                },
+              ),
+
+              // StreamBuilder<List<Map<String, dynamic>>>(
+              //   stream: dem0_data,
+              //   builder: (context, snapshot) {
+              //     if (!snapshot.hasData) {
+              //       return const Center(child: CircularProgressIndicator());
+              //     }
+              //     final demo = snapshot.data!;
+
+              //     return ListView.builder(
+              //       itemCount: demo.length,
+              //       itemBuilder: (context, index) {
+              //         return ListTile(title: Text(demo[index]['detail']));
+              //       },
+              //     );
+              //   },
+              // ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(

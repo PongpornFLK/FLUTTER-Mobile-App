@@ -21,7 +21,7 @@ class Appme extends StatelessWidget {
         appBarTheme: const AppBarTheme(color: Color.fromARGB(255, 19, 16, 16)),
       ),
       initialRoute: '/',
-      routes: {'/': (context) => Welcome(), '/home': (context) => const Home()},
+      routes: {'/': (context) => Home(), '/welcome': (context) => Welcome()},
       //home : Detail(productId: 5);
       //home: Welcome(),
     );
