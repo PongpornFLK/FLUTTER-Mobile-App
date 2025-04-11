@@ -1,10 +1,14 @@
+import 'package:app_supabase/providers/billed_provider.dart';
+import 'package:app_supabase/providers/transaction_provider.dart';
 import 'package:app_supabase/widget/boxDetail.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:app_supabase/widget/container.dart';
 import 'package:http/http.dart' as http;
 import 'package:app_supabase/model_item/demoData.dart';
 
+// test get supabase data
 Future<void> insertData() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -83,6 +87,12 @@ class _HomeState extends State<Home> {
                 },
                 child: const Text("Go to Welcome"),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/supa');
+                },
+                child: const Text("SupaTest"),
+              ),
 
               Text("Data"),
               FutureBuilder(
@@ -108,6 +118,40 @@ class _HomeState extends State<Home> {
                   return LinearProgressIndicator();
                 },
               ),
+
+              // ตัวรับข้อมูลจาก Provider
+              // Consumer(
+              //   builder: (context, BilledProvider provider, child) {
+              //     return ListView.builder(
+              //       itemCount: provider.getBilled().length,
+              //       itemBuilder: (context, int index) {
+              //         return BoxDetail(
+              //           provider.getBilled()[index].name,
+              //           provider.getBilled()[index].price,
+              //           provider.getBilled()[index].total_price,
+              //           Colors.red,
+              //         );
+              //       },
+              //     );
+              //   },
+              // ),
+              // Consumer(
+              //   builder: (context, TransactionProvider provider,
+              //       child) {
+              //     return ListView.builder(
+              //       itemCount: provider.getTransctions().length,
+              //       itemBuilder: (context, index) {
+              //         return Container(
+              //           margin: const EdgeInsets.all(10),
+              //           child: Text(provider
+              //               .getTransctions()[index].price
+              //               .toString()),
+              //         );
+              //       },
+              //     );
+              //   },
+              // ),
+              // แสดงข้อมูลที่ได้จาก API
 
               // StreamBuilder<List<Map<String, dynamic>>>(
               //   stream: dem0_data,
