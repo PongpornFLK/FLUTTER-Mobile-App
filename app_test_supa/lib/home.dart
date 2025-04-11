@@ -17,7 +17,7 @@ class _HomepageState extends State<Homepage> {
       context: context,
       builder:
           (context) => AlertDialog(
-            content: TextField(controller: TextEditingController()),
+            content: TextField(controller: textController),
             actions: [
               TextButton(
                 onPressed: () {
@@ -33,8 +33,10 @@ class _HomepageState extends State<Homepage> {
 
   void saveDemo() async {
     await Supabase.instance.client.from('device').insert({
-      'body': textController.text,
+      'body': textController.text.toString(),
     });
+    textController.clear();
+    debugPrint("Data saved: ${textController.text}");
   }
 
   // Read Table_name from Supabase in App
