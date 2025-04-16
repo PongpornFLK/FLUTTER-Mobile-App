@@ -40,38 +40,129 @@ class _HomepageState extends State<Homepage> {
   }
 
   // Read Table_name from Supabase in App
-  final readData = Supabase.instance.client
+  final deviceStream = Supabase.instance.client
       .from('device')
       .stream(primaryKey: ['id']);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
-            Text("Testing Connect Supabase"),
-            StreamBuilder<List<Map<String, dynamic>>>(
-              stream: readData,
-              builder: (context, snapshot) {
-                if (!snapshot.hasData) {
-                  return Center(child: CircularProgressIndicator());
-                }
-                final datas = snapshot.data!;
-                return ListView.builder(
-                  itemCount: datas.length,
-                  itemBuilder: (context, index) {
-                    // get individual data from list
-                    final data = datas[index];
-                    debugPrint("Data1: $data");
-                    // get column name from list
-                    final detail = data['id'];
-                    debugPrint("Data2: $detail");
+            const Text(
+              "ข้อมูลจาก Supabase",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
 
-                    return Text(detail);
-                  },
-                );
-              },
+            Expanded(
+              child: StreamBuilder<List<Map<String, dynamic>>>(
+                stream: deviceStream,
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+
+                  final data = snapshot.data!;
+
+                  if (data.isEmpty) {
+                    return const Center(
+                      child: Text("Dont have data in Table Supabase"),
+                    );
+                  }
+
+                  return ListView.builder(
+                    itemCount: data.length,
+                    itemBuilder: (context, index) {
+                      final item = data.take(2).toList();
+
+                      return Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children:
+                            item.map((e) {
+                              return Text(
+                                e['body'] + " ",
+                                style: TextStyle(fontSize: 18),
+                              );
+                            }).toList(),
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
+
+            Expanded(
+              child: StreamBuilder<List<Map<String, dynamic>>>(
+                stream: deviceStream,
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+
+                  final data = snapshot.data!;
+                  final use_where =data.where((e) => e['body'].toString().contains("Notebook")).toList();
+
+                  if (data.isEmpty) {
+                    return const Center(
+                      child: Text("Dont have data in Table Supabase"),
+                    );
+                  }
+
+                  return Column(
+                    children: [
+                      Text(
+                        "จำนวนข้อมูลทั้งหมด: ${data.length}",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Column(
+                        children:
+                            use_where.map((e) {
+                              return Text(e['body'],style: TextStyle(fontSize: 18),);
+                            }).toList(),
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
+            Expanded(
+              child: StreamBuilder<List<Map<String, dynamic>>>(
+                stream: deviceStream,
+                builder: (context, snapshot) {
+                  if (!snapshot.hasData) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+
+                  final data = snapshot.data!;
+                  if (data.isEmpty) {
+                    return Center(child: Text("ไม่มีข้อมูล"));
+                  }
+
+                  final itemOne = data[0];
+                  final bodys = itemOne['body'];
+
+                  final itemTwo = data[1];
+                  final bodysTwo = itemTwo['body'];
+
+                  return Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'ข้อความ: $bodys ',
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        Text(', $bodysTwo', style: TextStyle(fontSize: 18)),
+                      ],
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),

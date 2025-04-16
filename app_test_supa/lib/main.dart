@@ -19,9 +19,6 @@ class Appme extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Homepage(),
-    );
+    return MaterialApp(debugShowCheckedModeBanner: false, home: Homepage());
   }
 }
