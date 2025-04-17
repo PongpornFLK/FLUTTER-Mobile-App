@@ -1,3 +1,5 @@
+import 'package:app_supabase/auth_service/service.dart';
+import 'package:app_supabase/main_page/login.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -44,8 +46,23 @@ class _HomepageState extends State<Homepage> {
       .from('device')
       .stream(primaryKey: ['id']);
 
+  // Get Authen service
+  final authen = AuthService();
+
+  // Log out function
+  void Logout() async {
+    await authen.signOut();
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Login()),
+    );
+    debugPrint("Log out success");
+  }
+
   @override
   Widget build(BuildContext context) {
+    final currentEmail = authen.getCurrentUserEmail();
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -102,7 +119,12 @@ class _HomepageState extends State<Homepage> {
                   }
 
                   final data = snapshot.data!;
-                  final use_where =data.where((e) => e['body'].toString().contains("Notebook")).toList();
+                  final use_where =
+                      data
+                          .where(
+                            (e) => e['body'].toString().contains("Notebook"),
+                          )
+                          .toList();
 
                   if (data.isEmpty) {
                     return const Center(
@@ -122,7 +144,10 @@ class _HomepageState extends State<Homepage> {
                       Column(
                         children:
                             use_where.map((e) {
-                              return Text(e['body'],style: TextStyle(fontSize: 18),);
+                              return Text(
+                                e['body'],
+                                style: TextStyle(fontSize: 18),
+                              );
                             }).toList(),
                       ),
                     ],
@@ -163,6 +188,22 @@ class _HomepageState extends State<Homepage> {
                   );
                 },
               ),
+            ),
+
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Login()),
+                );
+              },
+              child: Text("Test Back Login Page"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Logout();
+              },
+              child: Text("Log Out"),
             ),
           ],
         ),

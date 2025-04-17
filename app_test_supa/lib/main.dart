@@ -1,4 +1,4 @@
-import 'package:app_supabase/home.dart';
+import 'package:app_supabase/main_page/home.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
