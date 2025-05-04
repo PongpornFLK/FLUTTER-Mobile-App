@@ -1,5 +1,6 @@
 import 'package:app_supabase/auth_service/service.dart';
 import 'package:app_supabase/main_page/login.dart';
+import 'package:app_supabase/main_page/storage.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -189,7 +190,15 @@ class _HomepageState extends State<Homepage> {
                 },
               ),
             ),
-
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => Storage()),
+                );
+              },
+              child: Text("New Page Storage"),
+            ),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(

@@ -17,6 +17,10 @@ dependencies:
   intl: ^0.20.2
   http: ^1.3.0
   provider: ^6.1.4
+  patrol: ^3.15.1
+  image_picker: ^1.1.2
+  file_picker: ^10.1.2
+  open_file: ^3.5.10
 
 dev_dependencies:
   flutter_test:
@@ -59,3 +63,12 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+patrol:
+  app_name: app_supabase
+  andriod:
+    package_name: com.example.app_supabase
+  ios:
+    bundle_id: com.example.app_supabase
+  macos:
+    bundle_id: com.example.macos.app_supabase

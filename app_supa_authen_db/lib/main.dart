@@ -2,6 +2,7 @@ import 'package:app_supabase/main_page/home.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+
 Future<void> main() async {
   // Settup Supabase
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,6 +14,7 @@ Future<void> main() async {
 
   runApp(const Appme());
 }
+
 
 class Appme extends StatelessWidget {
   const Appme({super.key});

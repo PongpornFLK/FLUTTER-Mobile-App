@@ -1,5 +1,6 @@
 import 'package:app_getx/controller/cart_controller.dart';
 import 'package:app_getx/model/product.dart';
+import 'package:app_getx/view/item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:app_getx/controller/shopping_controller.dart';
@@ -78,6 +79,34 @@ class Shopping extends StatelessWidget {
                     },
                   ),
                 ),
+                SizedBox(height: 30),
+                Text(
+                  "List of Cart",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Expanded(
+                  child: StreamBuilder<List<Map<String, dynamic>>>(
+                    stream: deviceStream,
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+
+                      final data = snapshot.data!;
+                      return ListView.builder(
+                        itemCount: data.length,
+                        itemBuilder: (context, index) {
+                          final item = data[index];
+                          final bodys = item['body'];
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [Text(bodys)],
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ),
 
                 SizedBox(height: 30),
                 GetX<CartController>(
@@ -95,6 +124,15 @@ class Shopping extends StatelessWidget {
                       style: TextStyle(fontWeight: FontWeight.bold),
                     );
                   },
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Get.to(ListItem());
+                  },
+                  child: Text(
+                    'Go to List Item',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
             ),

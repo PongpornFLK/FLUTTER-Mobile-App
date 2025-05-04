@@ -1,3 +1,4 @@
+import 'package:app_supabase/model_item/transaction.dart';
 import 'package:app_supabase/providers/billed_provider.dart';
 import 'package:app_supabase/providers/transaction_provider.dart';
 import 'package:app_supabase/widget/boxDetail.dart';
@@ -118,61 +119,25 @@ class _HomeState extends State<Home> {
                   return LinearProgressIndicator();
                 },
               ),
-
-              // ตัวรับข้อมูลจาก Provider
-              // Consumer(
-              //   builder: (context, BilledProvider provider, child) {
-              //     return ListView.builder(
-              //       itemCount: provider.getBilled().length,
-              //       itemBuilder: (context, int index) {
-              //         return BoxDetail(
-              //           provider.getBilled()[index].name,
-              //           provider.getBilled()[index].price,
-              //           provider.getBilled()[index].total_price,
-              //           Colors.red,
-              //         );
-              //       },
-              //     );
-              //   },
-              // ),
-              // Consumer(
-              //   builder: (context, TransactionProvider provider,
-              //       child) {
-              //     return ListView.builder(
-              //       itemCount: provider.getTransctions().length,
-              //       itemBuilder: (context, index) {
-              //         return Container(
-              //           margin: const EdgeInsets.all(10),
-              //           child: Text(provider
-              //               .getTransctions()[index].price
-              //               .toString()),
-              //         );
-              //       },
-              //     );
-              //   },
-              // ),
-              // แสดงข้อมูลที่ได้จาก API
-
-              // StreamBuilder<List<Map<String, dynamic>>>(
-              //   stream: dem0_data,
-              //   builder: (context, snapshot) {
-              //     if (!snapshot.hasData) {
-              //       return const Center(child: CircularProgressIndicator());
-              //     }
-              //     final demo = snapshot.data!;
-
-              //     return ListView.builder(
-              //       itemCount: demo.length,
-              //       itemBuilder: (context, index) {
-              //         return ListTile(title: Text(demo[index]['detail']));
-              //       },
-              //     );
-              //   },
-              // ),
+              Consumer(
+                builder: (context, TransactionProvider provider, child) {
+                  return ListView.builder(
+                    itemCount: provider.transactions.length,
+                    itemBuilder: (context, int index) {
+                      Transaction transaction = provider.transactions[index];
+                      return Container(
+                        margin: const EdgeInsets.all(10),
+                        child: Text(transaction.id),
+                      );
+                    },
+                  );
+                },
+              ),
             ],
           ),
         ),
       ),
+
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showDialog(
