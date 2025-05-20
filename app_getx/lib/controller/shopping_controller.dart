@@ -3,7 +3,7 @@ import 'package:get/state_manager.dart';
 
 class ShoppingController extends GetxController {
   var products = <Product>[].obs;
-  // Observable list of products
+  // Observable list of productsgg
   @override
   void onInit() {
     super.onInit();
@@ -23,3 +23,4 @@ class ShoppingController extends GetxController {
     products.assignAll(productsList);
   }
 }
+// test
