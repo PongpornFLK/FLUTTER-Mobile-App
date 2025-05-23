@@ -1,12 +1,25 @@
+import 'package:app_graph/graph.dart';
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
+
+class ChartData {
+  final String x;
+  final double y;
+  ChartData(this.x, this.y);
+}
 
 void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,38 +35,7 @@ class MyApp extends StatelessWidget {
           titleLarge: TextStyle(color: Colors.black),
         ),
       ),
-      home: const MyHomePage(title: 'GRAPH DEMO'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blueAccent[100],
-        elevation: 8.0, // Add shadow effect
-        shadowColor: Colors.black.withOpacity(
-          0.8,
-        ), // Add shadow color with opacity
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[const Text('Graph Demo')],
-        ),
-      ),
+      home: Graph(),
     );
   }
 }
