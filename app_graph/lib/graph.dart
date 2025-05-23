@@ -4,7 +4,9 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 class ChartData {
   final double x;
   final double y;
-  ChartData(this.x, this.y);
+  final double maxLineY;
+  final double minLineY;
+  ChartData(this.x, this.y, this.maxLineY, this.minLineY);
 }
 
 class Graph extends StatefulWidget {
@@ -18,8 +20,10 @@ class _GraphState extends State<Graph> {
   late TrackballBehavior _trackballBehavior;
   int selectedPageIndex = 0;
 
-  final TextEditingController _xController = TextEditingController();
-  final TextEditingController _yController = TextEditingController();
+  final TextEditingController xController = TextEditingController();
+  final TextEditingController yController = TextEditingController();
+  final TextEditingController maxLineYController = TextEditingController();
+  final TextEditingController minLineYController = TextEditingController();
 
   List<ChartData> _data = [];
 
@@ -43,19 +47,62 @@ class _GraphState extends State<Graph> {
   }
 
   void _addData() {
-    setState(() {
-      _data.add(
-        ChartData(
-          double.parse(_xController.text),
-          double.parse(_yController.text),
-        ),
+    if (xController.text.isNotEmpty &&
+        yController.text.isNotEmpty &&
+        maxLineYController.text.isNotEmpty &&
+        minLineYController.text.isNotEmpty) {
+      double x = double.tryParse(xController.text) ?? 0;
+      double y = double.tryParse(yController.text) ?? 0;
+      double maxLineY = double.tryParse(maxLineYController.text) ?? 0;
+      double minLineY = double.tryParse(minLineYController.text) ?? 0;
+
+      setState(() {
+        _data.add(ChartData(x, y, maxLineY, minLineY));
+      });
+    } else {
+      showDialog(
+        context: context,
+        builder:
+            (context) => AlertDialog(
+              backgroundColor: Colors.white,
+              title: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 5.0),
+                    child: Icon(Icons.error, color: Colors.red),
+                  ),
+                  Text(
+                    'Error',
+                    style: TextStyle(
+                      color: Colors.red,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+              content: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [Text('Please enter all fields')],
+              ),
+              actions: [
+                Center(
+                  child: TextButton(
+                    child: Text('OK'),
+                    onPressed: () => Navigator.pop(context),
+                  ),
+                ),
+              ],
+            ),
       );
-    });
+    }
   }
 
   void _clearData() {
     setState(() {
       _data.clear();
+      maxLineYController.clear();
+      minLineYController.clear();
     });
   }
 
@@ -91,11 +138,20 @@ class _GraphState extends State<Graph> {
           children: [
             UserAccountsDrawerHeader(
               decoration: BoxDecoration(color: Colors.yellow),
-              accountName: Text("FLK"),
-              accountEmail: Text("FLK@gmail.com"),
+              accountName: Text(
+                "Pongporn FLK",
+                style: TextStyle(color: Colors.black),
+              ),
+              accountEmail: Text(
+                "official@gmail.com",
+                style: TextStyle(color: Colors.black),
+              ),
               currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.white,
-                child: Image.asset('assets/images/profile.png'),
+                backgroundColor: Colors.grey[300],
+                child: CircleAvatar(
+                  radius: 40,
+                  backgroundImage: AssetImage('assets/img/myProfile.jpg'),
+                ),
               ),
             ),
             ListTile(
@@ -137,7 +193,7 @@ class _GraphState extends State<Graph> {
                   children: [
                     Expanded(
                       child: TextFormField(
-                        controller: _xController,
+                        controller: xController,
                         decoration: InputDecoration(
                           labelText: 'X',
                           border: OutlineInputBorder(
@@ -149,7 +205,7 @@ class _GraphState extends State<Graph> {
                     SizedBox(width: 20),
                     Expanded(
                       child: TextFormField(
-                        controller: _yController,
+                        controller: yController,
                         decoration: InputDecoration(
                           labelText: 'Y',
                           border: OutlineInputBorder(
@@ -166,9 +222,9 @@ class _GraphState extends State<Graph> {
                   children: [
                     Expanded(
                       child: TextFormField(
-                        // controller: _xController,
+                        controller: maxLineYController,
                         decoration: InputDecoration(
-                          labelText: 'maxLineX',
+                          labelText: 'maxLineY',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
@@ -178,9 +234,9 @@ class _GraphState extends State<Graph> {
                     SizedBox(width: 20),
                     Expanded(
                       child: TextFormField(
-                        // controller: _yController,
+                        controller: minLineYController,
                         decoration: InputDecoration(
-                          labelText: 'maxLineY',
+                          labelText: 'minLineY',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
@@ -254,6 +310,24 @@ class _GraphState extends State<Graph> {
                     color: Colors.grey.withOpacity(0.3),
                     width: 1,
                   ),
+                  plotBands: <PlotBand>[
+                    PlotBand(
+                      start: double.tryParse(maxLineYController.text) ?? 0,
+                      end: double.tryParse(maxLineYController.text) ?? 0,
+                      borderColor: Colors.red,
+                      borderWidth: 2,
+                    ),
+                    PlotBand(
+                      start: double.tryParse(minLineYController.text) ?? 0,
+                      end: double.tryParse(minLineYController.text) ?? 0,
+                      borderColor: Colors.red,
+                      borderWidth:
+                          double.tryParse(maxLineYController.text) != 0 &&
+                                  double.tryParse(minLineYController.text) != 0
+                              ? 2
+                              : 0,
+                    ),
+                  ],
                 ),
                 indicators: [
                   RsiIndicator<dynamic, dynamic>(
