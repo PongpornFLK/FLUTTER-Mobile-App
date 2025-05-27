@@ -127,6 +127,8 @@ class _GraphState extends State<Graph> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
+                          fillColor: Colors.grey.withOpacity(0.1),
+                          filled: true,
                         ),
                       ),
                     ),
@@ -139,6 +141,8 @@ class _GraphState extends State<Graph> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
+                          fillColor: Colors.grey.withOpacity(0.1),
+                          filled: true,
                         ),
                       ),
                     ),
@@ -156,6 +160,8 @@ class _GraphState extends State<Graph> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
+                          fillColor: Colors.grey.withOpacity(0.1),
+                          filled: true,
                         ),
                       ),
                     ),
@@ -168,6 +174,8 @@ class _GraphState extends State<Graph> {
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
                           ),
+                          fillColor: Colors.grey.withOpacity(0.1),
+                          filled: true,
                         ),
                       ),
                     ),

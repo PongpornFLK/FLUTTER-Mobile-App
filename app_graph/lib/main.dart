@@ -6,7 +6,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 class ChartData {
   final String x;
   final double y;
-  ChartData(this.x, this.y);
+  ChartData(this.x, this.y, double maxLineY, double minLineY);
 }
 
 void main() {

@@ -1,5 +1,6 @@
 import 'package:app_graph/pages/graph.dart';
 import 'package:app_graph/pages/pdf.dart';
+import 'package:app_graph/pages/second_graph.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,7 +14,7 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   int selectedPageIndex = 0;
 
-  static const List<Widget> pages = [Home(), Graph(), PagePDF(), PagePDF()];
+  static const List<Widget> pages = [Home(), Graph(), SecondGraph(), PagePDF()];
 
   void onPageTapped(int index) {
     setState(() {
@@ -146,8 +147,8 @@ class _HomepageState extends State<Homepage> {
             ),
             ListTile(
               selected: selectedPageIndex == 2,
-              leading: Icon(Icons.file_open),
-              title: Text("PDF"),
+              leading: Icon(Icons.auto_graph_outlined),
+              title: Text("Graph-Cal"),
               onTap: () {
                 onPageTapped(2);
                 Navigator.pop(context);
@@ -156,7 +157,7 @@ class _HomepageState extends State<Homepage> {
             ListTile(
               selected: selectedPageIndex == 3,
               leading: Icon(Icons.settings),
-              title: Text("Settings"),
+              title: Text("PDF"),
               onTap: () {
                 onPageTapped(3);
                 Navigator.pop(context);
