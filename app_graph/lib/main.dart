@@ -1,4 +1,5 @@
-import 'package:app_graph/graph.dart';
+import 'package:app_graph/pages/graph.dart';
+import 'package:app_graph/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -25,17 +26,11 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Graph Demo',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark().copyWith(
-        primaryColor: Colors.black,
-        scaffoldBackgroundColor: Colors.white,
-        appBarTheme: AppBarTheme(foregroundColor: Colors.white),
-        textTheme: TextTheme(
-          bodyLarge: TextStyle(color: Colors.black),
-          bodyMedium: TextStyle(color: Colors.black),
-          titleLarge: TextStyle(color: Colors.black),
-        ),
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Graph(),
+      home: Homepage(),
     );
   }
 }

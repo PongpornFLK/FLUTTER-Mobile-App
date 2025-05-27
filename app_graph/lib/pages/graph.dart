@@ -1,13 +1,8 @@
+import 'package:app_graph/pages/pdf.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-
-class ChartData {
-  final double x;
-  final double y;
-  final double maxLineY;
-  final double minLineY;
-  ChartData(this.x, this.y, this.maxLineY, this.minLineY);
-}
+import 'package:app_graph/model/chartData.dart';
+import 'dart:math';
 
 class Graph extends StatefulWidget {
   const Graph({super.key});
@@ -18,7 +13,6 @@ class Graph extends StatefulWidget {
 
 class _GraphState extends State<Graph> {
   late TrackballBehavior _trackballBehavior;
-  int selectedPageIndex = 0;
 
   final TextEditingController xController = TextEditingController();
   final TextEditingController yController = TextEditingController();
@@ -27,16 +21,7 @@ class _GraphState extends State<Graph> {
 
   List<ChartData> _data = [];
 
-  // Part Select Page - Drawer
-  static const List<Widget> pages = [Graph(), Graph(), Graph()];
-
-  void onItemTapped(int index) {
-    setState(() {
-      selectedPageIndex = index;
-    });
-  }
-
-  // Part Graph
+  // Part Graph Button
   @override
   void initState() {
     _trackballBehavior = TrackballBehavior(
@@ -70,7 +55,7 @@ class _GraphState extends State<Graph> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.only(right: 5.0),
-                    child: Icon(Icons.error, color: Colors.red),
+                    child: Icon(Icons.error, color: Colors.red, size: 64),
                   ),
                   Text(
                     'Error',
@@ -87,8 +72,12 @@ class _GraphState extends State<Graph> {
               ),
               actions: [
                 Center(
-                  child: TextButton(
-                    child: Text('OK'),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.white,
+                      elevation: 1,
+                    ),
+                    child: Text('Close', style: TextStyle(color: Colors.black)),
                     onPressed: () => Navigator.pop(context),
                   ),
                 ),
@@ -103,6 +92,8 @@ class _GraphState extends State<Graph> {
       _data.clear();
       maxLineYController.clear();
       minLineYController.clear();
+      xController.clear();
+      yController.clear();
     });
   }
 
@@ -115,69 +106,6 @@ class _GraphState extends State<Graph> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        backgroundColor: Colors.yellow[400],
-        elevation: 8.0,
-        shadowColor: Colors.black.withOpacity(0.8),
-        title: Text('FLK', style: TextStyle(color: Colors.black)),
-        leading: Builder(
-          builder: (context) {
-            return IconButton(
-              icon: Icon(Icons.menu, color: Colors.black),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-            );
-          },
-        ),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            UserAccountsDrawerHeader(
-              decoration: BoxDecoration(color: Colors.yellow),
-              accountName: Text(
-                "Pongporn FLK",
-                style: TextStyle(color: Colors.black),
-              ),
-              accountEmail: Text(
-                "official@gmail.com",
-                style: TextStyle(color: Colors.black),
-              ),
-              currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.grey[300],
-                child: CircleAvatar(
-                  radius: 40,
-                  backgroundImage: AssetImage('assets/img/myProfile.jpg'),
-                ),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.home),
-              title: Text("Home"),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.auto_graph_outlined),
-              title: Text("Graph"),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text("Settings"),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          ],
-        ),
-      ),
       body: Column(
         children: [
           Padding(
@@ -315,7 +243,11 @@ class _GraphState extends State<Graph> {
                       start: double.tryParse(maxLineYController.text) ?? 0,
                       end: double.tryParse(maxLineYController.text) ?? 0,
                       borderColor: Colors.red,
-                      borderWidth: 2,
+                      borderWidth:
+                          double.tryParse(maxLineYController.text) != 0 &&
+                                  double.tryParse(minLineYController.text) != 0
+                              ? 2
+                              : 0,
                     ),
                     PlotBand(
                       start: double.tryParse(minLineYController.text) ?? 0,
