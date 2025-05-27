@@ -1,5 +1,15 @@
+import 'dart:io';
+import 'dart:math';
+import 'dart:typed_data';
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:open_file/open_file.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:syncfusion_flutter_pdf/pdf.dart';
+
 import 'package:app_graph/model/chartData.dart';
 
 class SecondGraph extends StatefulWidget {
@@ -10,7 +20,11 @@ class SecondGraph extends StatefulWidget {
 }
 
 class _SecondGraphState extends State<SecondGraph> {
-  late TrackballBehavior _trackballBehavior;
+  late TrackballBehavior isTrackballBehavior;
+
+  //Variables Generate Image / PDF
+  late GlobalKey<SfCartesianChartState> isCartesianChartKey;
+  late List<ChartData2> chartData;
 
   // Controllers for input fields
   final TextEditingController x1Controller = TextEditingController();
@@ -22,7 +36,6 @@ class _SecondGraphState extends State<SecondGraph> {
   final TextEditingController x7Controller = TextEditingController();
   final TextEditingController x8Controller = TextEditingController();
   final TextEditingController x9Controller = TextEditingController();
-  final TextEditingController x10Controller = TextEditingController();
 
   final TextEditingController y1Controller = TextEditingController();
   final TextEditingController y2Controller = TextEditingController();
@@ -33,19 +46,23 @@ class _SecondGraphState extends State<SecondGraph> {
   final TextEditingController y7Controller = TextEditingController();
   final TextEditingController y8Controller = TextEditingController();
   final TextEditingController y9Controller = TextEditingController();
-  final TextEditingController y10Controller = TextEditingController();
 
-  final List<ChartData2> _data = [];
+  // final List<ChartData2> isData = [];
+  double answerA = 0.0;
+  double answerB = 0.0;
 
   @override
   void initState() {
-    _trackballBehavior = TrackballBehavior(
+    isTrackballBehavior = TrackballBehavior(
       enable: true,
       tooltipSettings: InteractiveTooltip(format: 'point.x : point.y%'),
     );
+    isCartesianChartKey = GlobalKey();
+    chartData = <ChartData2>[];
     super.initState();
   }
 
+  // Part Calculation Graph
   void _addData() {
     List<double> xValues = [
       double.tryParse(x1Controller.text) ?? 0,
@@ -57,7 +74,6 @@ class _SecondGraphState extends State<SecondGraph> {
       double.tryParse(x7Controller.text) ?? 0,
       double.tryParse(x8Controller.text) ?? 0,
       double.tryParse(x9Controller.text) ?? 0,
-      double.tryParse(x10Controller.text) ?? 0,
     ];
 
     List<double> yValues = [
@@ -70,7 +86,6 @@ class _SecondGraphState extends State<SecondGraph> {
       double.tryParse(y7Controller.text) ?? 0,
       double.tryParse(y8Controller.text) ?? 0,
       double.tryParse(y9Controller.text) ?? 0,
-      double.tryParse(y10Controller.text) ?? 0,
     ];
 
     if (xValues.any((x) => x == 0) || yValues.any((y) => y == 0)) {
@@ -79,16 +94,16 @@ class _SecondGraphState extends State<SecondGraph> {
     }
 
     setState(() {
-      _data.clear();
+      chartData.clear();
       for (int i = 0; i < xValues.length; i++) {
-        _data.add(ChartData2(x: xValues[i], y: yValues[i]));
+        chartData.add(ChartData2(x: xValues[i], y: yValues[i]));
       }
     });
   }
 
   void _clearData() {
     setState(() {
-      _data.clear();
+      chartData.clear();
       x1Controller.clear();
       x2Controller.clear();
       x3Controller.clear();
@@ -98,7 +113,6 @@ class _SecondGraphState extends State<SecondGraph> {
       x7Controller.clear();
       x8Controller.clear();
       x9Controller.clear();
-      x10Controller.clear();
       y1Controller.clear();
       y2Controller.clear();
       y3Controller.clear();
@@ -108,12 +122,11 @@ class _SecondGraphState extends State<SecondGraph> {
       y7Controller.clear();
       y8Controller.clear();
       y9Controller.clear();
-      y10Controller.clear();
     });
   }
 
   void _calculate() {
-    if (_data.isEmpty) {
+    if (chartData.isEmpty) {
       _showErrorDialog('No data to calculate');
       return;
     }
@@ -123,23 +136,25 @@ class _SecondGraphState extends State<SecondGraph> {
     double sumXY = 0;
     double sumX2 = 0;
 
-    for (var data in _data) {
+    for (var data in chartData) {
       sumX += data.x;
       sumY += data.y;
       sumXY += data.x * data.y;
       sumX2 += data.x * data.x;
     }
 
-    int n = _data.length;
-    double b = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
-    double a = (sumY - b * sumX) / n;
+    int n = chartData.length;
+    answerB = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+    answerA = (sumY - answerB * sumX) / n;
 
     setState(() {
-      for (var data in _data) {
-        data.maxLineY = a + b * data.x;
-        data.minLineY = a + b * data.x;
+      for (var data in chartData) {
+        data.maxLineY = answerA + answerB * data.x;
+        data.minLineY = answerA + answerB * data.x;
       }
     });
+
+    // print('a: $answerA, b: $answerB');
   }
 
   void _showErrorDialog(String message) {
@@ -182,6 +197,56 @@ class _SecondGraphState extends State<SecondGraph> {
             ],
           ),
     );
+  }
+
+  // Part Generate Images
+  Future<List<int>> isRenderChartImg() async {
+    final ui.Image? data = await isCartesianChartKey.currentState!.toImage(
+      pixelRatio: 3.0,
+    );
+    final ByteData? bytes = await data!.toByteData(
+      format: ui.ImageByteFormat.png,
+    );
+    final Uint8List imageBytes = bytes!.buffer.asUint8List(
+      bytes.offsetInBytes,
+      bytes.lengthInBytes,
+    );
+    await Navigator.of(context).push<dynamic>(
+      MaterialPageRoute<dynamic>(
+        builder: (BuildContext context) {
+          return Scaffold(body: Image.memory(imageBytes));
+        },
+      ),
+    );
+    return imageBytes;
+  }
+
+  Future<void> isRenderChartPDF() async {
+    final List<int> imageBytes = await isRenderChartImg();
+    final PdfBitmap bitmap = PdfBitmap(imageBytes);
+    final PdfDocument document = PdfDocument();
+    document.pageSettings.size = Size(
+      bitmap.width.toDouble(),
+      bitmap.height.toDouble(),
+    );
+    final PdfPage page = document.pages.add();
+    final Size pageSize = page.getClientSize();
+    page.graphics.drawImage(
+      bitmap,
+      Rect.fromLTWH(0, 0, pageSize.width, pageSize.height),
+    );
+    final List<int> bytes = document.saveSync();
+    document.dispose();
+    //Get external storage directory
+    final Directory directory = await getApplicationSupportDirectory();
+    //Get directory path
+    final String path = directory.path;
+    //Create an empty file to write PDF data
+    File file = File('$path/Output.pdf');
+    //Write PDF bytes data
+    await file.writeAsBytes(bytes, flush: true);
+    //Open the PDF document in mobile
+    OpenFile.open('$path/Output.pdf');
   }
 
   @override
@@ -300,20 +365,6 @@ class _SecondGraphState extends State<SecondGraph> {
                   ),
                 ],
               ),
-              SizedBox(height: 8),
-              Row(
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      controller: x10Controller,
-                      decoration: InputDecoration(
-                        labelText: 'X10',
-                        border: OutlineInputBorder(),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
               SizedBox(height: 20),
 
               // Y Values Input
@@ -423,20 +474,6 @@ class _SecondGraphState extends State<SecondGraph> {
                   ),
                 ],
               ),
-              SizedBox(height: 8),
-              Row(
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      controller: y10Controller,
-                      decoration: InputDecoration(
-                        labelText: 'Y10',
-                        border: OutlineInputBorder(),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
               SizedBox(height: 20),
 
               // Buttons
@@ -457,22 +494,82 @@ class _SecondGraphState extends State<SecondGraph> {
               Container(
                 height: 400,
                 child: SfCartesianChart(
-                  trackballBehavior: _trackballBehavior,
+                  key: isCartesianChartKey,
+                  trackballBehavior: isTrackballBehavior,
                   primaryXAxis: NumericAxis(),
                   primaryYAxis: NumericAxis(),
                   series: <CartesianSeries<ChartData2, double>>[
                     LineSeries<ChartData2, double>(
-                      dataSource: _data,
+                      dataSource: chartData,
                       xValueMapper: (ChartData2 data, _) => data.x,
                       yValueMapper: (ChartData2 data, _) => data.y,
                       name: 'Data Points',
                     ),
                     LineSeries<ChartData2, double>(
-                      dataSource: _data,
+                      dataSource: chartData,
                       xValueMapper: (ChartData2 data, _) => data.x,
                       yValueMapper: (ChartData2 data, _) => data.maxLineY,
                       name: 'Regression Line',
                       color: Colors.red,
+                    ),
+                  ],
+                ),
+              ),
+
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [Text("a: $answerA"), Text("b: $answerB")],
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.deepPurple[400],
+                        elevation: 4,
+                      ),
+                      onPressed: () {
+                        isRenderChartImg();
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Generate Image',
+                            style: GoogleFonts.montserrat(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          Icon(Icons.image, color: Colors.white),
+                        ],
+                      ),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.deepPurple[400],
+                        elevation: 4,
+                      ),
+                      onPressed: () {
+                        isRenderChartPDF();
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Generate PDF',
+                            style: GoogleFonts.montserrat(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(width: 10),
+                          Icon(Icons.picture_as_pdf, color: Colors.white),
+                        ],
+                      ),
                     ),
                   ],
                 ),
